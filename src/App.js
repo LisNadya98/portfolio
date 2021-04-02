@@ -43,7 +43,7 @@ function App(props) {
       title: "Traffic Reporting System",
       description: (<>A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia. The product was developed for 2 potential users: police officers and motor vehicle drivers. <br/><br/>
                       The purpose of this development is to reduce the time taken of filing a traffic accident report, allow drivers to have online access to the final report’s documentation, receive police summons and pay them online, and provide a platform to improve managing submitted reports as opposed to the manual procedure. I achieved an A for this course.<br/><br/>
-                      For the purpose of FYP demo, integration with Google Maps and third party sms API to achieve platform's design and to allow users to save time reporting
+                      For the purpose of FYP demo, integration with Google Maps and third party sms API to achieve platform's design and to allow users to save time reporting.
                     </>),
       role: (<ul>
         <li>Designed the system's architecture and optimal userflows based on the requirements found from the background study research</li> 
