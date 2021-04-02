@@ -21,6 +21,14 @@ const useStyles = makeStyles({
   },
 });
 
+
+const scroll = (div) =>{
+    $('html, body').animate({
+        scrollTop: $(div).offset().top
+    }, 1000);
+  }
+
+
 export default function MenuDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -45,22 +53,20 @@ export default function MenuDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button onClick={()=>scroll("#about")}>
+            <ListItemText primary={"ABOUT"} />
+        </ListItem>
+        <ListItem button onClick={()=>scroll("#skills")}>
+            <ListItemText primary={"SKILL"} />
+        </ListItem>
+        <ListItem button onClick={()=>scroll("#work")}>
+            <ListItemText primary={"WORK"} />
+        </ListItem>
+        <ListItem button onClick={()=>scroll("#contact")}>
+            <ListItemText primary={"CONTACT"} />
+        </ListItem>
       </List>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
     </div>
   );
 
