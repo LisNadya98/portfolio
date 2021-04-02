@@ -189,7 +189,7 @@ function App(props) {
           </Grid>
           
           <Grid item xs={isSmall ? 12 : 6} style={{position:"relative"}}>
-            <div style={{position:"absolute", width:"100%", marginTop:isSmall?"-30px":"0"}}>
+            <div style={{position:"absolute", width:"100%", marginTop:isSmall?"-70px":"0"}}>
               <div id={isSmall ? "avatarImgSmall" : "avatarImg"}>
                 <img style={isSmall ? {width:"150px"} : {width:"500px"}} src={avatar}/>
               </div>
