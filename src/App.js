@@ -54,21 +54,23 @@ function App(props) {
     {
       img: (<img className={classes.modalImg} src={j1}/>),
       title: "Jamit!",
-      description: "A card-based web platform for the creative industry for education and entertainment purposes under Shared Experience Art Machine. I was involved at the early stages of this product.",
+      description: (<>Currently involved in the early stages of the product for a card-based in-house web platform related to the creative industry for story-writing, education and entertainment purposes under Shared Experience Art Machine.</>),
       role: (<ul>
-        <li>Designs optimal userflows using Figma based on the stakeholder's requirements</li> 
-        <li>Develops the product's front end using React JS, Node JS, Javascript, HTML5, CSS and MongoDB for an in-house software</li> 
-        <li>Writes down functional test cases for development and design to refer to</li> 
+        <li>Perform 3 job responsibilities, which are design, development and testing.</li>
+        <li>Design more than 30 user interfaces with UX input using Figma based on the stakeholder's requirements</li> 
+        <li>Develop the product's front-end where the platform uses MERN stack (MongoDB, ExpressJS, ReactJS and NodeJS)</li> 
+        <li>Write down functional test cases for development and design to refer to</li> 
         </ul>),
       date: "Ongoing"
     },
     {
       img: (<img className={classes.modalImg} src={p1}/>),
       title: "PixiPixi",
-      description: "A proof of concept marketplace using NFT (Non-fungible Token) and Blockchain technology. Started getting involved at the beginning.",
+      description: (<>A proof of concept marketplace using NFT (Non-fungible Token) and Blockchain technology. Currently involved since the early stages of the product.</>),
       role: (<ul>
-        <li>Designs optimal userflows using Figma based on the client's requirements</li> 
-        <li>Develops the product's front end using React TS, Node JS, Typescript, Javascript, HTML5, CSS and MongoDB for an in-house software</li> 
+        <li>Perform 2 job responsibilities, which are design and development.</li>
+        <li>Design more than 5 user interfaces with UX input using Figma based on the client's requirements</li> 
+        <li>Develop the product's front end that uses a MERN-typescript stack (MongoDB, Express TS, React TS and Node JS) with solidity to handle the blockchain functionality of the platform for an in-house software</li> 
         </ul>),
       date: "Ongoing"
     }
