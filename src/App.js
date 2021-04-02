@@ -179,7 +179,7 @@ function App(props) {
         </div>
         <Grid container justify="center" alignItems="center" style={{width:"100vW", padding:"2rem", height: "calc(100vH - 2rem)", maxWidth:"1100px", margin:"auto", position:"relative", zIndex:"2"}}>
           <Grid item xs={isSmall ? 12 : 6}>
-            <Typography className={classes.fontBodyHeader}>
+            <Typography className={classes.fontBodyHeader} style={isSmall ? {fontSize:"2rem"} : null}>
               Hi, I am<br/>
               <span style={{color:"#7CBBB0"}}>Lis Nadya</span>
             </Typography>
