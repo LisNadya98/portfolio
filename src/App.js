@@ -164,7 +164,7 @@ function App(props) {
                     ABOUT
                   </Link>
                   <Link onClick={()=>scroll("#skills")} className={classes.link} underline="none">
-                    SKILL
+                    SKILLS
                   </Link>
                   <Link onClick={()=>scroll("#work")} className={classes.link} underline="none">
                     WORK
@@ -187,6 +187,18 @@ function App(props) {
           <img style={isSmall ? {width:"50px"} : {width:"200px"}} src={leaf2}/>
         </div>
         <Grid container justify="center" alignItems="center" style={{width:"100vW", padding:isSmall?"1rem":"2rem", height: "calc(100vH - 2rem)", maxWidth:"1100px", margin:"auto", position:"relative", zIndex:"2"}}>
+          {isSmall &&
+          <Grid item xs={12} style={{position:"relative", marginBottom:"-3rem"}}>
+            <div style={{position:"absolute", width:"100%", marginTop:"-30px"}}>
+              <div id={"avatarImgSmall"}>
+                <img style={{width:"150px"}} src={avatar}/>
+              </div>
+            </div>
+            <div id={"avatarSmall"}></div>
+            <div className={classes.avatarBgSmall}>
+            </div>
+          </Grid>
+          }
           <Grid item xs={isSmall ? 12 : 6}>
             <Typography className={classes.fontBodyHeader} style={isSmall ? {fontSize:"2rem"} : null}>
               Hi, I am<br/>
@@ -197,25 +209,27 @@ function App(props) {
             </Typography>
           </Grid>
           
-          <Grid item xs={isSmall ? 12 : 6} style={{position:"relative"}}>
-            <div style={{position:"absolute", width:"100%", marginTop:isSmall?"-70px":"0"}}>
-              <div id={isSmall ? "avatarImgSmall" : "avatarImg"}>
-                <img style={isSmall ? {width:"150px"} : {width:"500px"}} src={avatar}/>
+          {!isSmall &&
+          <Grid item xs={6} style={{position:"relative"}}>
+            <div style={{position:"absolute", width:"100%"}}>
+              <div id={"avatarImg"}>
+                <img style={{width:"500px"}} src={avatar}/>
               </div>
             </div>
-            <div id={isSmall ? "avatarSmall" : "avatar"}></div>
-            <div className={isSmall ? classes.avatarBgSmall : classes.avatarBg}>
+            <div id={"avatar"}></div>
+            <div className={classes.avatarBg}>
             </div>
-          </Grid>
+          </Grid>}
+          
         </Grid>
       </div>
       <div className={classes.aboutSlant}>
       </div>
 
       {/* Skills */}
-      <div id="skills" style={{marginTop:isSmall?"-15rem":"-10rem", marginBottom:"3rem", padding:"2rem 0"}}>
+      <div id="skills" style={{marginTop:"-15rem", marginBottom:"3rem", padding:"2rem 0"}}>
         <Grid container className={classes.skills} justify="center" alignItems="center">
-          <Grid item xs={isSmall ? 12 : 6} style={isSmall?{padding:"1rem"}:{padding:"6rem"}}>
+          <Grid item xs={isSmall ? 12 : 6} style={isSmall?{padding:"3rem"}:{padding:"6rem"}}>
             <Typography className={classes.fontBody} style={{textAlign:"center"}}>
               <Brush className={classes.icon} style={{marginTop:"10px", marginBottom:"-10px"}}/>
             </Typography>
@@ -233,7 +247,7 @@ function App(props) {
               Photoshop, Figma
             </Typography>
           </Grid>
-          <Grid item xs={isSmall ? 12 : 6} style={isSmall?{padding:"1rem",borderTop:"1px solid #D2D2D2"}:{padding:"6rem",borderLeft:"1px solid #D2D2D2"}}>
+          <Grid item xs={isSmall ? 12 : 6} style={isSmall?{padding:"3rem",borderTop:"1px solid #D2D2D2"}:{padding:"6rem",borderLeft:"1px solid #D2D2D2"}}>
             <div style={{border:"5px solid #7CBBB0", borderRadius:"10px", margin:"auto", width:"4rem", height:"3rem"}}>
               <Typography className={classes.fontBody} style={{textAlign:"center"}}>
                 <Code className={classes.icon}/>
@@ -260,7 +274,7 @@ function App(props) {
 
       {/* My Recent Work */}
       <Grid id="work"container style={{maxWidth:"1200px", margin:"auto", marginBottom:"6rem"}} justify="center" alignItems="center">
-        <Grid item xs={12}>
+        <Grid item xs={12} style={isSmall ? {padding:"0 1rem"} : null}>
           <Typography className={classes.fontBodyH2} style={{color:"#7CBBB0"}}>
             My Recent Work
           </Typography>
@@ -270,8 +284,8 @@ function App(props) {
         </Grid>
          {/* List of Works */}
          
-        <Grid container spacing={3} justify="center" alignItems="center" style={{maxWidth:"100%", margin:"3rem 0"}}>
-          <Grid item xs={isSmall ? 12 : 4}>
+        <Grid container spacing={isSmall?0:3} justify="center" alignItems="center" style={{maxWidth:"100%", margin:"3rem 0"}}>
+          <Grid item xs={isSmall ? 12 : 4} style={isSmall ? {marginBottom:"1rem"} : null}>
             <div className={classes.work} onClick={()=>handleOpen(0)}>
               <img className={classes.img} src={work1}/>
               <div className={classes.workContent} style={isSmall ? {height:"auto", minHeight:"130px"} : null}>
@@ -284,7 +298,7 @@ function App(props) {
               </div>
             </div>
           </Grid>
-          <Grid item xs={isSmall ? 12 : 4}>
+          <Grid item xs={isSmall ? 12 : 4}  style={isSmall ? {marginBottom:"1rem"} : null}>
             <div className={classes.work} onClick={()=>handleOpen(1)}>
               <img className={classes.img} src={work2}/>
               <div className={classes.workContent}  style={isSmall ? {height:"auto", minHeight:"130px"} : null}>
@@ -297,7 +311,7 @@ function App(props) {
               </div>
             </div>
           </Grid>
-          <Grid item xs={isSmall ? 12 : 4}>
+          <Grid item xs={isSmall ? 12 : 4}  style={isSmall ? {marginBottom:"1rem"} : null}>
             <div className={classes.work} onClick={()=>handleOpen(2)}>
               <img className={classes.img} src={work3}/>
               <div className={classes.workContent}  style={isSmall ? {height:"auto",minHeight:"130px"} : null}>
@@ -318,7 +332,7 @@ function App(props) {
             Contact Me
           </Typography>
           <Typography className={classes.fontBody} style={{textAlign:"center", color:"white"}}>
-            If you wanna get in touch, talk to me about a project collaboration or just say hi,<br/>
+            If you wanna get in touch, talk to me about a project collaboration or just say hi,
             do send me an email or a message via
           </Typography>
           <Grid container justify="center" alignItems="center" style={{marginTop:"1rem"}}>

@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
 
     about:{
         width: "100vW",
-        height: "calc(100vH - 2rem)",
+        height: "calc(100vH + 2rem)",
         background: "#E8DDD6",
         flexGrow: 1,
         overflow:"visible"
@@ -149,7 +149,8 @@ const useStyles = makeStyles((theme) => ({
 
     footerContent:{
         maxWidth:"1200px",
-        margin:"auto"
+        margin:"auto",
+        padding:"0 1rem"
     },
 
     avatar:{

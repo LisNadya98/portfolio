@@ -20,6 +20,12 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
+
+  listText:{
+    fontFamily:"Quicksand, sans-serif",
+    fontSize:"1rem",
+    color:"#282A33"
+  }
 });
 
 
@@ -55,19 +61,18 @@ export default function MenuDrawer() {
     >
       <List>
         <ListItem button onClick={()=>scroll("#about")}>
-            <ListItemText primary={"ABOUT"} />
+            <ListItemText className={classes.listText} primary={"ABOUT"} />
         </ListItem>
         <ListItem button onClick={()=>scroll("#skills")}>
-            <ListItemText primary={"SKILL"} />
+            <ListItemText className={classes.listText} primary={"SKILLS"} />
         </ListItem>
         <ListItem button onClick={()=>scroll("#work")}>
-            <ListItemText primary={"WORK"} />
+            <ListItemText className={classes.listText} primary={"WORK"} />
         </ListItem>
         <ListItem button onClick={()=>scroll("#contact")}>
-            <ListItemText primary={"CONTACT"} />
+            <ListItemText className={classes.listText} primary={"CONTACT"} />
         </ListItem>
       </List>
-      <Divider />
     </div>
   );
 
