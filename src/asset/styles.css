@@ -40,9 +40,9 @@
     position:relative;
     display: block;
     margin:auto;
-    margin-top:0px; 
-    width: 100px;
-    height: 100px;
+    margin-top:20px; 
+    width: 150px;
+    height: 150px;
     z-index:2;
     background: #E86C45;
     border-radius: 70% 85% 75% 95% / 70% 80% 90% 85%;
@@ -66,9 +66,9 @@
 #avatarImgSmall{
     position: relative; 
     z-index: 3;
-    width:100px;
+    width:150px;
     margin: auto;
-    margin-top:50px;
+    margin-top:30px;
     margin-bottom:-100px;
     animation-name: avatarImg;
     animation-duration: 5s;
@@ -95,13 +95,13 @@
 
 @keyframes avatarImg {
     0%   { 
-        margin-top:50px
+        margin-top:30px
     }
     50%  { 
         margin-top:0px; 
     }
     100% { 
-        margin-top:50px; 
+        margin-top:30px; 
     
     }
 }

@@ -191,11 +191,10 @@ function App(props) {
           <Grid item xs={isSmall ? 12 : 6} style={{position:"relative"}}>
             <div style={{position:"absolute", width:"100%", marginTop:"1rem"}}>
               <div id={isSmall ? "avatarImgSmall" : "avatarImg"}>
-              <img style={isSmall ? {width:"100px"} : {width:"500px"}} src={avatar}/>
+                <img style={isSmall ? {width:"150px"} : {width:"500px"}} src={avatar}/>
+              </div>
             </div>
             <div id={isSmall ? "avatarSmall" : "avatar"}></div>
-            </div>
-            
             <div className={isSmall ? classes.avatarBgSmall : classes.avatarBg}>
             </div>
           </Grid>
@@ -205,7 +204,7 @@ function App(props) {
       </div>
 
       {/* Skills */}
-      <div id="skills"style={{marginTop:"-10rem", marginBottom:"3rem", padding:"2rem 0"}}>
+      <div id="skills"style={{marginTop:isSmall?"-15rem":"-10rem", marginBottom:"3rem", padding:"2rem 0"}}>
         <Grid container className={classes.skills} justify="center" alignItems="center">
           <Grid item xs={isSmall ? 12 : 6} style={isSmall?{padding:"1rem"}:{padding:"6rem"}}>
             <Typography className={classes.fontBody} style={{textAlign:"center"}}>
