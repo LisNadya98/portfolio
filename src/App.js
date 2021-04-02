@@ -12,7 +12,7 @@ import {IconButton,
   Backdrop,
   Modal,
   InputAdornment} from '@material-ui/core';
-import {Brush, Code, LinkedIn, MailOutline, RemoveCircleOutline} from '@material-ui/icons';
+import {Brush, Code, LinkedIn, MailOutline, CloseRounded} from '@material-ui/icons';
 import MenuDrawer from './component/menu';
 import {useStyles} from './asset/styles';
 import './asset/styles.css';
@@ -89,11 +89,20 @@ function App(props) {
   const modal = (i) =>{
     return (
         <div className={isSmall ? classes.paperSmall : classes.paper}>
-          <div className={classes.modalSection} style={{padding:isSmall ? "0.2rem 1rem" : "1rem 2rem",borderBottom:"1px solid #C4C4C4"}}>
-            <Typography className={classes.fontBodyH3} style={{fontSize:isSmall ? "0.8rem":"1.25rem", textAlign:"left", margin:"0"}}>
-              {workContent[i].title}
-            </Typography>
-          </div>
+          
+          <Grid container className={classes.modalSection} style={{borderBottom:"1px solid #C4C4C4"}}>
+            <Grid item xs={8}>
+              <Typography className={classes.fontBodyH3} style={{textAlign:"left", margin:"0"}}>
+                {workContent[i].title}
+              </Typography>
+
+            </Grid>
+            <Grid item xs={4}>
+              <IconButton  style={{padding:"0.5rem", float:"right"}} onClick={()=>handleClose()}>
+                <CloseRounded/>
+              </IconButton>
+            </Grid>
+          </Grid>
           <div className={isSmall ? classes.paperContentSmall : classes.paperContent} >
             <div style={{textAlign:'center'}}>
               {workContent[i].img}
@@ -177,7 +186,7 @@ function App(props) {
         <div style={{position:"absolute", zIndex:"1", bottom:"0", left:"0"}}>
           <img style={isSmall ? {width:"50px"} : {width:"200px"}} src={leaf2}/>
         </div>
-        <Grid container justify="center" alignItems="center" style={{width:"100vW", padding:"2rem", height: "calc(100vH - 2rem)", maxWidth:"1100px", margin:"auto", position:"relative", zIndex:"2"}}>
+        <Grid container justify="center" alignItems="center" style={{width:"100vW", padding:isSmall?"1rem":"2rem", height: "calc(100vH - 2rem)", maxWidth:"1100px", margin:"auto", position:"relative", zIndex:"2"}}>
           <Grid item xs={isSmall ? 12 : 6}>
             <Typography className={classes.fontBodyHeader} style={isSmall ? {fontSize:"2rem"} : null}>
               Hi, I am<br/>
@@ -204,7 +213,7 @@ function App(props) {
       </div>
 
       {/* Skills */}
-      <div id="skills"style={{marginTop:isSmall?"-15rem":"-10rem", marginBottom:"3rem", padding:"2rem 0"}}>
+      <div id="skills" style={{marginTop:isSmall?"-15rem":"-10rem", marginBottom:"3rem", padding:"2rem 0"}}>
         <Grid container className={classes.skills} justify="center" alignItems="center">
           <Grid item xs={isSmall ? 12 : 6} style={isSmall?{padding:"1rem"}:{padding:"6rem"}}>
             <Typography className={classes.fontBody} style={{textAlign:"center"}}>
