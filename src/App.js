@@ -41,10 +41,13 @@ function App(props) {
     {
       img: (<img className={classes.modalImg} src={trs1}/>),
       title: "Traffic Reporting System",
-      description: "A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia. The product was developed for 2 potential users: police officers and motor vehicle drivers. The purpose of this development is to reduce the time taken of filing a traffic accident report, allow drivers to have online access to the final report’s documentation, receive police summons and pay them online, and provide a platform to improve managing submitted reports as opposed to the manual procedure. I achieved an A for this course.",
+      description: (<>A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia. The product was developed for 2 potential users: police officers and motor vehicle drivers. <br/><br/>
+                      The purpose of this development is to reduce the time taken of filing a traffic accident report, allow drivers to have online access to the final report’s documentation, receive police summons and pay them online, and provide a platform to improve managing submitted reports as opposed to the manual procedure. I achieved an A for this course.<br/><br/>
+                      For the purpose of FYP demo, integration with Google Maps and third party sms API to achieve platform's design and to allow users to save time reporting
+                    </>),
       role: (<ul>
         <li>Designed the system's architecture and optimal userflows based on the requirements found from the background study research</li> 
-        <li>Developed the product from end to end using XAMPP, PHP, Javascript, HTML5, CSS, JQuery and MySQL</li> 
+        <li>Developed the platform end  to end using WAMP stack (Windows, Apache, MySQL and PHP) with Javascript, JQuery, HTML5 and CSS</li> 
         </ul>),
       date: "July 2019"
     },
@@ -186,16 +189,18 @@ function App(props) {
         <div style={{position:"absolute", zIndex:"1", bottom:"0", left:"0"}}>
           <img style={isSmall ? {width:"50px"} : {width:"200px"}} src={leaf2}/>
         </div>
-        <Grid container justify="center" alignItems="center" style={{width:"100vW", padding:isSmall?"1rem":"2rem", height: "calc(100vH - 2rem)", maxWidth:"1100px", margin:"auto", position:"relative", zIndex:"2"}}>
+        <Grid container justify="center" alignItems={isSmall?"flex-start":"center"} style={{width:"100vW", padding:isSmall?"1rem":"2rem", height: "calc(100vH - 2rem)", maxWidth:"1100px", margin:"auto", position:"relative", zIndex:"2"}}>
           {isSmall &&
-          <Grid item xs={12} style={{position:"relative", marginBottom:"-3rem"}}>
-            <div style={{position:"absolute", width:"100%", marginTop:"-30px"}}>
-              <div id={"avatarImgSmall"}>
-                <img style={{width:"150px"}} src={avatar}/>
+          <Grid item xs={12} style={{position:"relative"}}>
+            <div style={{marginTop:"2rem", marginBottom:"-2rem"}}>
+              <div style={{position:"absolute", width:"100%"}}>
+                <div id={"avatarImgSmall"}>
+                  <img style={{width:"220px"}} src={avatar}/>
+                </div>
               </div>
-            </div>
-            <div id={"avatarSmall"}></div>
-            <div className={classes.avatarBgSmall}>
+              <div id={"avatarSmall"}></div>
+              <div className={classes.avatarBgSmall}>
+              </div>
             </div>
           </Grid>
           }

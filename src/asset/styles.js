@@ -198,9 +198,9 @@ const useStyles = makeStyles((theme) => ({
         position:"relative",
         display: "block",
         margin:"auto",
-        marginTop:"-140px", 
-        width: "150px",
-        height: "150px",
+        marginTop:"-200px", 
+        width: "220px",
+        height: "220px",
         zIndex:"1",
         background: "#97908B",
         borderRadius: "70% 85% 75% 95% / 70% 80% 90% 85%"
