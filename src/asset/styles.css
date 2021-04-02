@@ -1,0 +1,107 @@
+::-webkit-scrollbar {
+    width: 5px;
+    padding:0.5rem
+}
+  
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7CBBB0; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #54a093; 
+}
+
+#avatar{
+    position:absolute;
+    display: block;
+    margin:auto;
+    top:-200px;
+    right:80px;
+    margin-top:0px; 
+    width: 350px;
+    height: 350px;
+    z-index:2;
+    background: #E86C45;
+    border-radius: 70% 85% 75% 95% / 70% 80% 90% 85%;
+    animation-name: avatar;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+
+#avatarSmall{
+    position:relative;
+    display: block;
+    margin:auto;
+    margin-top:0px; 
+    width: 100px;
+    height: 100px;
+    z-index:2;
+    background: #E86C45;
+    border-radius: 70% 85% 75% 95% / 70% 80% 90% 85%;
+    animation-name: avatar;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+#avatarImg{
+    position: absolute; 
+    z-index: 3;
+    margin: auto;
+    top:-250px;
+    right:0;
+    margin-top:50px;
+    animation-name: avatarImg;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+#avatarImgSmall{
+    position: relative; 
+    z-index: 3;
+    width:100px;
+    margin: auto;
+    margin-top:50px;
+    margin-bottom:-100px;
+    animation-name: avatarImg;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes avatar {
+    0%   { 
+        border-radius: 70% 85% 75% 95% / 70% 80% 90% 85%;
+    }
+    25%  { 
+        border-radius: 90% 80% 85% 90% / 80% 90% 70% 80%;
+    }
+    50%  { 
+        border-radius: 90% 85% 75% 80% / 75% 85% 75% 90%;
+    }
+    75%  { 
+        border-radius:  90% 80% 85% 90% / 80% 90% 70% 80%;
+    }
+    100% { 
+        border-radius: 70% 85% 75% 95% / 70% 80% 90% 85%;
+    }
+}
+
+@keyframes avatarImg {
+    0%   { 
+        margin-top:50px
+    }
+    50%  { 
+        margin-top:0px; 
+    }
+    100% { 
+        margin-top:50px; 
+    
+    }
+}
