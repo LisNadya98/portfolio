@@ -33,7 +33,7 @@ import leaf2 from "./element/leaf2.png";
 function App(props) {
   const classes = useStyles(props);
   const [openModal, setOpenModal] = useState(0);
-  const [isSmall, setIsSmall] = useState(false);
+  const [isSmall, setIsSmall] = useState( window.matchMedia("(max-width: 700px)").matches );
   const [openMenu, setOpenMenu] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -122,7 +122,7 @@ function App(props) {
 
   useEffect(() => {
     window.matchMedia("(max-width: 700px)").addListener(
-      (e)=>{
+      e=>{
         if (e.matches) { 
           console.log("small")
           setIsSmall(true)
