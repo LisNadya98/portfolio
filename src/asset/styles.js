@@ -1,10 +1,22 @@
 import { makeStyles } from '@material-ui/core/styles';
+const fontSmall = "0.8rem`";
+const fontBody = "1rem`";
+const fontH4 = "1.1rem";
+const fontH3 = "1.25rem";
+const fontH2 = "2rem";
+const fontH1 = "1.75rem";
+const black = "#282A33";
+const darkBg = "#E8DDD6";
+const brightBg = "#F5F5F3";
+const green = "#7CBBB0";
+const red ="#E86C45";
+const white = "#FFF";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         overflowY:"auto",
-        background:"#F5F5F3",
+        background:brightBg,
         overflowX:"hidden",
     },
 
@@ -13,60 +25,60 @@ const useStyles = makeStyles((theme) => ({
     },
 
     topBar:{
-        background:"#E8DDD6",
+        background:darkBg,
         boxShadow:"none",
         padding:"0.5rem",
     },
 
     link:{
         marginLeft: theme.spacing(6),
-        fontSize:"1rem",
-        color:"#282A33",
+        fontSize:fontBody,
+        color:black,
         transition:"0.5s",
         cursor:"pointer"
     },
 
     fontTopPanel:{
         fontFamily:"Quicksand, sans-serif",
-        fontSize:"1rem",
+        fontSize:fontBody,
         fontWeight:"bold",
-        color:"#282A33",
+        color:black,
     },
 
     fontBody:{
         fontFamily:"Open Sans, sans-serif",
-        fontSize:"1rem",
-        color:"#282A33",
+        fontSize:fontBody,
+        color:black,
     },
 
     fontBodyH2:{
         fontFamily:"Open Sans, sans-serif",
-        fontSize:"2rem",
-        color:"#282A33",
+        fontSize:fontH2,
+        color:black,
         fontWeight:"bold",
         textAlign:"center", 
     },
 
     fontBodyH3:{
         fontFamily:"Open Sans, sans-serif",
-        fontSize:"1.25rem",
-        marginBottom:"1rem",
-        color:"#282A33",
+        fontSize:fontH3,
+        marginBottom:fontBody,
+        color:black,
         fontWeight:"bold",
     },
 
     fontBodyH4:{
         fontFamily:"Open Sans, sans-serif",
-        fontSize:"1.1rem",
-        marginBottom:"1rem",
-        color:"#282A33",
+        fontSize:fontH4,
+        marginBottom:fontBody,
+        color:black,
         fontWeight:"600",
     },
 
     fontModalFooter:{
         fontFamily:"Open Sans, sans-serif",
-        fontSize:"0.8rem",
-        marginBottom:"1rem",
+        fontSize:fontSmall,
+        marginBottom:fontBody,
         color:"#C4C4C4",
     },
 
@@ -74,13 +86,22 @@ const useStyles = makeStyles((theme) => ({
         fontFamily:"Open Sans, sans-serif",
         fontWeight:"bold", 
         fontSize:"64px",
-        color:"#282A33",
+        color:black,
     },
 
     about:{
+        position:"relative",
         width: "100vW",
-        height: "calc(100vH + 2rem)",
-        background: "#E8DDD6",
+        height: "800px",
+        background: darkBg,
+        flexGrow: 1,
+        overflow:"visible"
+    },
+
+    aboutSmall:{
+        width: "100vW",
+        height: "600px",
+        background: darkBg,
         flexGrow: 1,
         overflow:"visible"
     },
@@ -95,25 +116,25 @@ const useStyles = makeStyles((theme) => ({
         maxWidth:"1200px",
         margin:"auto",
         marginBottom:"3rem",
-        borderRadius:"1rem",
-        background:"white",
+        borderRadius:fontBody,
+        background:white,
         border:"1px solid #D2D2D2",
     },
     line:{
         margin:"2rem auto", 
         width:"4rem", 
         height:"5px", 
-        background:"#7CBBB0", 
-        borderRadius:"1rem"
+        background:green, 
+        borderRadius:fontBody
     },
 
     icon:{
         fontSize:"50px", 
-        color:"#7CBBB0"
+        color:green
     },
 
     h4:{
-        color:"#E86C45"
+        color:red
     },
 
     work:{
@@ -121,9 +142,9 @@ const useStyles = makeStyles((theme) => ({
         width:"calc(100% - 6rem)",
         padding:"3rem",
         overflow:"hidden",
-        background:"white",
-        borderRadius:"1rem",
-        border:"1px solid #D2D2D2",
+        background:white,
+        borderRadius:fontBody,
+        border:"1px solid #c4c4c4",
         transition:"0.5s",
         cursor:"pointer",
         '&:hover':{
@@ -134,16 +155,26 @@ const useStyles = makeStyles((theme) => ({
 
     img:{
         width:"100%",
-        maxHeight:"200px",
-        marginBottom:"1rem"
+        minHeight:"200px",
+        marginBottom:fontBody
+    },
+
+    imgMedium:{
+        width:"100%",
+        minHeight:"120px",
+        marginBottom:fontBody
     },
 
     workContent:{
         height:"130px"
     },
 
+    workContentMedium:{
+        height:"280px"
+    },
+
     footer:{
-        background:"#282A33",
+        background:black,
         padding:"3rem 0",
     },
 
@@ -163,20 +194,20 @@ const useStyles = makeStyles((theme) => ({
 
     button:{
         border:"2px solid white", 
-        margin:"1rem",
+        margin: "0.8rem",
         background:"282A33",
         transition:"0.5s",
         '&:hover':{
-            background:"white"
+            background:white
         },
         '&:hover $buttonIcon':{
-            color:"#282A33"
+            color:black
         }
     },
 
     buttonIcon:{
         fontSize:"18px", 
-        color:"white",
+        color:white,
         transition:"0.5s",
     },
 
@@ -226,8 +257,8 @@ const useStyles = makeStyles((theme) => ({
     
     paper: {
         position:"relative",
-        background: "#FFF",
-        borderRadius:"1rem",
+        background: white,
+        borderRadius:fontBody,
         maxWidth:"600px",
         maxHeight:"95vH",
         outline:"none",
@@ -235,8 +266,9 @@ const useStyles = makeStyles((theme) => ({
 
     paperSmall: {
         position:"relative",
-        background: "#FFF",
-        borderRadius:"1rem",
+        background: white,
+        margin:"1rem",
+        borderRadius:fontBody,
         maxWidth:"600px",
         top:"0",
         outline:"none",
@@ -257,7 +289,7 @@ const useStyles = makeStyles((theme) => ({
 
     modalImg:{
         width:"100%",
-        marginBottom:"1rem"
+        marginBottom:fontBody
     },
 
     modalSection:{

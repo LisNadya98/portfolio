@@ -61,17 +61,21 @@ export default function MenuDrawer() {
     >
       <List>
         <ListItem button onClick={()=>scroll("#about")}>
-            <ListItemText className={classes.listText} primary={"ABOUT"} />
+            <ListItemText className={classes.listText} primary={"About"} />
         </ListItem>
+        <Divider/>
         <ListItem button onClick={()=>scroll("#skills")}>
-            <ListItemText className={classes.listText} primary={"SKILLS"} />
+            <ListItemText className={classes.listText} primary={"Skills"} />
         </ListItem>
+        <Divider/>
         <ListItem button onClick={()=>scroll("#work")}>
-            <ListItemText className={classes.listText} primary={"WORK"} />
+            <ListItemText className={classes.listText} primary={"Work"} />
         </ListItem>
+        <Divider/>
         <ListItem button onClick={()=>scroll("#contact")}>
-            <ListItemText className={classes.listText} primary={"CONTACT"} />
+            <ListItemText className={classes.listText} primary={"Contact"} />
         </ListItem>
+        <Divider/>
       </List>
     </div>
   );
