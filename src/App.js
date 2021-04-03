@@ -1,21 +1,11 @@
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Suspense } from 'react';
 import {IconButton, 
-  Toolbar,
-  AppBar, 
   Grid,
-  Link,
-  Select,
-  MenuItem,
-  Typography,
-  Fade,
-  Backdrop,
-  Modal,
-  InputAdornment} from '@material-ui/core';
-import {Brush, Code, LinkedIn, MailOutline, CloseRounded} from '@material-ui/icons';
-import MenuDrawer from './component/menu';
-import Mobile from './component/mobile';
-import Web from './component/web';
+  Typography} from '@material-ui/core';
+import {CloseRounded} from '@material-ui/icons';
+// import Mobile from './component/mobile';
+// import Web from './component/web';
 import {useStyles} from './asset/styles';
 import './asset/styles.css';
 
@@ -31,6 +21,8 @@ import j1 from "./element/j1.png";
 import p1 from "./element/p1.png";
 import leaf1 from "./element/leaf1.png";
 import leaf2 from "./element/leaf2.png";
+const Mobile = React.lazy(() => import('./component/mobile'));
+const Web = React.lazy(() => import('./component/web'));
 
 function App(props) {
   const classes = useStyles(props);
@@ -38,7 +30,7 @@ function App(props) {
   const [isSmall, setIsSmall] = useState( window.matchMedia("(max-width: 790px)").matches );
   const [openMenu, setOpenMenu] = useState(false);
   const [open, setOpen] = useState(false);
-
+  
   const workContent = [
     {
       img: (<img className={classes.modalImg} src={trs1}/>),
@@ -153,6 +145,19 @@ function App(props) {
 
   return (
     <div>
+      <Suspense fallback={
+        <div class="loadingScreen">
+          <div class="wrapper">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <span>Loading</span>
+          </div>
+        </div>}
+      >
       {isSmall ? 
         
         <Mobile 
@@ -176,6 +181,7 @@ function App(props) {
           modal={modal}
           openModal={openModal}
         />}
+      </Suspense> 
     </div>
   );
 }
