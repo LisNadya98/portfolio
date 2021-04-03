@@ -60,10 +60,6 @@ export default function MenuDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem button onClick={()=>scroll("#about")}>
-            <ListItemText className={classes.listText} primary={"About"} />
-        </ListItem>
-        <Divider/>
         <ListItem button onClick={()=>scroll("#skills")}>
             <ListItemText className={classes.listText} primary={"Skills"} />
         </ListItem>

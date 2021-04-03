@@ -100,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
 
     aboutSmall:{
         width: "100vW",
-        height: "600px",
+        height: "700px",
         background: darkBg,
         flexGrow: 1,
         overflow:"visible"

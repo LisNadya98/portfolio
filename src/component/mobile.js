@@ -71,7 +71,10 @@ function Mobile(props) {
               <span style={{color:"#7CBBB0"}}>Lis Nadya</span>
             </Typography>
             <Typography className={classes.fontBody} style={{marginTop:"20px"}}>
-              I am a front-end developer with one year of working experience. I graduated with First Class Honours in Bachelor of Computer Science (Hons.).
+              I am a front-end developer with one year of working experience at Shared Experience Art Machine, LLC. 
+              I graduated with First Class Honors in Bachelor of Computer Science (Hons.). 
+              I continuously work on improving my skills at solving one design problem at a time. 
+              My passion in design and bringing them to life fuels my daily motivation to accomplish my tasks.
             </Typography>
           </Grid>
           
@@ -134,7 +137,7 @@ function Mobile(props) {
             My Recent Work
           </Typography>
           <Typography className={classes.fontBody} style={{textAlign:"center"}}>
-            Projects I’ve worked on recently. The projects I have worked on are either disclosed or are still under development.
+            The projects I have worked on are either disclosed or are still under development.
           </Typography>
         </Grid>
          {/* List of Works */}
