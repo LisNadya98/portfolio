@@ -241,7 +241,7 @@ function Web(props) {
         className={classes.modal}
         open={open}
         onClose={handleClose}
-        style={{alignItems:"flex-start"}}
+        style={{alignItems:"center"}}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{

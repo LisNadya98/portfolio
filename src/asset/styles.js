@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
-const fontSmall = "0.8rem`";
-const fontBody = "1rem`";
+const fontSmall = "0.8rem";
+const fontBody = "1rem";
 const fontH4 = "1.1rem";
 const fontH3 = "1.25rem";
 const fontH2 = "2rem";
@@ -261,6 +261,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius:fontBody,
         maxWidth:"600px",
         maxHeight:"95vH",
+        overflowY:"auto",
         outline:"none",
     },
 

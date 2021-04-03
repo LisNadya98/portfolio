@@ -96,7 +96,7 @@ function App(props) {
 
   const modal = (i) =>{
     return (
-        <div className={classes.paperSmall}>
+        <div className={isSmall ? classes.paperSmall : classes.paper}>
           <Grid container justify="center" alignItems="center" className={classes.modalSection} style={{borderBottom:"1px solid #C4C4C4"}}>
             <Grid item xs={8}>
               <Typography className={classes.fontBodyH3} style={{textAlign:"left", margin:"0"}}>
@@ -110,7 +110,7 @@ function App(props) {
               </IconButton>
             </Grid>
           </Grid>
-          <div className={classes.paperContentSmall} >
+          <div className={isSmall ? classes.paperContentSmall : classes.paperContent} >
             <div style={{textAlign:'center', marginBottom:"1rem"}}>
               {workContent[i].img}
             </div>
