@@ -1,5 +1,5 @@
 import '../App.css';
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {IconButton, 
   Toolbar,
   AppBar, 
@@ -8,12 +8,10 @@ import {IconButton,
   Fade,
   Backdrop,
   Modal} from '@material-ui/core';
-import {Brush, Code, LinkedIn, MailOutline, CloseRounded} from '@material-ui/icons';
+import {Brush, Code, LinkedIn, MailOutline} from '@material-ui/icons';
 import MenuDrawer from './menu';
-import {useStyles} from '../asset/styles';
 import '../asset/styles.css';
 
-import $ from 'jquery';
 
 import avatar from "../element/avatar.png";
 import work1 from "../element/work1.png";
@@ -23,7 +21,7 @@ import leaf1 from "../element/leaf1.png";
 import leaf2 from "../element/leaf2.png";
 
 function Mobile(props) {
-  const {classes, workContent, handleClose, handleOpen, scroll, open, modal, openModal} = props
+  const {classes, handleClose, handleOpen, scroll, open, modal, openModal} = props
   
   return (
     <div className={classes.root}>
@@ -38,7 +36,9 @@ function Mobile(props) {
               </div>
             </Grid>
             <Grid item xs={6}>
-                <MenuDrawer/> 
+                <MenuDrawer 
+                scroll={scroll}
+                classes={classes}/> 
             </Grid>
           </Grid>
         </Toolbar>
@@ -66,11 +66,10 @@ function Mobile(props) {
             </div>
           </Grid>
           <Grid item xs={12} style={{marginTop:"2rem"}}>
-            <Typography className={classes.fontBodyHeader} style={{fontSize:"2rem"}}>
-              Hi, I am<br/>
-              <span style={{color:"#7CBBB0"}}>Lis Nadya</span>
+            <Typography className={classes.fontBodyHeader} style={{textAlign:"center", fontSize:"2rem"}}>
+              Hi, I am <span style={{color:"#7CBBB0"}}>Lis Nadya</span>
             </Typography>
-            <Typography className={classes.fontBody} style={{marginTop:"20px"}}>
+            <Typography className={classes.fontBody} style={{textAlign:"center", marginTop:"20px"}}>
               I am a front-end developer with one year of working experience at Shared Experience Art Machine, LLC. 
               I graduated with First Class Honors in Bachelor of Computer Science (Hons.). 
               I continuously work on improving my skills at solving one design problem at a time. 
@@ -137,7 +136,7 @@ function Mobile(props) {
             My Recent Work
           </Typography>
           <Typography className={classes.fontBody} style={{textAlign:"center"}}>
-            The projects I have worked on are either disclosed or are still under development.
+            These projects are either disclosed or are still under development.
           </Typography>
         </Grid>
          {/* List of Works */}

@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
 
+    menuIcon:{
+        color: black,
+    },
+
     topBar:{
         background:darkBg,
         boxShadow:"none",
@@ -296,6 +300,20 @@ const useStyles = makeStyles((theme) => ({
     modalSection:{
         padding:"1rem 2rem",
     
+    },
+
+    list: {
+        width: 250,
+    },
+
+    fullList: {
+        width: 'auto',
+    },
+
+    listText:{
+        fontFamily:"Quicksand, sans-serif",
+        fontSize:"1rem",
+        color:"#282A33"
     }
 }));
 
