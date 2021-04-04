@@ -110,7 +110,7 @@
 .loadingScreen{
     width:100vW;
     height:100vH;
-    background:#F5F5F3;
+    background:#fff;
     overflow:hidden;
     display: flex;
     align-items: center;
