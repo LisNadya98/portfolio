@@ -4,23 +4,16 @@ import {IconButton,
   Grid,
   Typography} from '@material-ui/core';
 import {CloseRounded} from '@material-ui/icons';
-// import Mobile from './component/mobile';
-// import Web from './component/web';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {useStyles} from './asset/styles';
 import './asset/styles.css';
 
 import $ from 'jquery';
 
-import avatar from "./element/avatar.png";
-import avatarBg from "./element/avatarBg.png";
-import work1 from "./element/work1.png";
-import work2 from "./element/work2.png";
-import work3 from "./element/work3.png";
 import trs1 from "./element/trs1.png";
 import j1 from "./element/j1.png";
 import p1 from "./element/p1.png";
-import leaf1 from "./element/leaf1.png";
-import leaf2 from "./element/leaf2.png";
+
 const Mobile = React.lazy(() => import('./component/mobile'));
 const Web = React.lazy(() => import('./component/web'));
 
