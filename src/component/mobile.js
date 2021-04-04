@@ -25,7 +25,7 @@ function Mobile(props) {
   
   return (
     <div className={classes.root}>
-      <AppBar id="about" position="static" className={classes.topBar} style={{position:"relative", zIndex:"2"}}>
+      <AppBar id="about" position="static" className={classes.topBar} style={{position:"relative", zIndex:"2", background:"#E8DDD6", boxShadow:"none", padding:"0.5rem",}}>
         <Toolbar variant="dense">
           <Grid container justify="center" alignItems="flex-start">
             <Grid item xs={6}>
