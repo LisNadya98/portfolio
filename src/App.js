@@ -17,13 +17,11 @@ import p1 from "./element/p1.png";
 const Mobile = React.lazy(() => {return Promise.all([
                                     import("./component/mobile"),
                                     new Promise(resolve => setTimeout(resolve, 1000))
-                                  ])
-                                  .then(([moduleExports]) => moduleExports);});
+                                  ]).then(([moduleExports]) => moduleExports);});
 const Web = React.lazy(() => {return Promise.all([
                           import("./component/web"),
                           new Promise(resolve => setTimeout(resolve, 1000))
-                        ])
-                        .then(([moduleExports]) => moduleExports);});
+                        ]).then(([moduleExports]) => moduleExports);});
 
 function App(props) {
   const classes = useStyles(props);
