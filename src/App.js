@@ -1,6 +1,6 @@
 import './App.css';
 import React, {useState, useEffect, Suspense } from 'react';
-import {IconButton, Grid, Typography} from '@material-ui/core';
+import {IconButton, Grid, Typography, StylesProvider} from '@material-ui/core';
 import {CloseRounded} from '@material-ui/icons';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {useStyles} from './asset/styles';
@@ -12,58 +12,15 @@ import trs1 from "./element/trs1.png";
 import j1 from "./element/j1.png";
 import p1 from "./element/p1.png";
 
-const Mobile = React.lazy(() => {return Promise.all([import("./component/mobile"),
-                                  new Promise(resolve => setTimeout(resolve, 1000))
-                                ]).then(([moduleExports]) => moduleExports);});
+// const Mobile = React.lazy(() => {return Promise.all([import("./component/mobile"),
+//                                   new Promise(resolve => setTimeout(resolve, 1000))
+//                                 ]).then(([moduleExports]) => moduleExports);});
 const Web = React.lazy(() =>  {return Promise.all([import("./component/web"),
                                 new Promise(resolve => setTimeout(resolve, 1000))
                               ]).then(([moduleExports]) => moduleExports);});
 
 function App(props) {
   const classes = useStyles(props);
-  const [openModal, setOpenModal] = useState(0);
-  const [isSmall, setIsSmall] = useState( window.matchMedia("(max-width: 790px)").matches );
-  const [openMenu, setOpenMenu] = useState(false);
-  const [open, setOpen] = useState(false);
-  
-  const workContent = [
-    {
-      img: (<img className={classes.modalImg} src={trs1}/>),
-      title: "Traffic Reporting System",
-      description: (<>A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia. The product was developed for 2 potential users: police officers and motor vehicle drivers. <br/><br/>
-                      The purpose of this development is to reduce the time taken of filing a traffic accident report, allow drivers to have online access to the final report’s documentation, receive police summons and pay them online, and provide a platform to improve managing submitted reports as opposed to the manual procedure. I achieved an A for this course.<br/><br/>
-                      For the purpose of FYP demo, integration with Google Maps and third party sms API to achieve platform's design and to allow users to save time reporting.
-                    </>),
-      role: (<ul>
-        <li>Designed the system's architecture and optimal userflows based on the requirements found from the background study research</li> 
-        <li>Developed the platform end  to end using WAMP stack (Windows, Apache, MySQL and PHP) with Javascript, JQuery, HTML5 and CSS</li> 
-        </ul>),
-      date: "July 2019"
-    },
-    {
-      img: (<img className={classes.modalImg} src={j1}/>),
-      title: "Jamit!",
-      description: (<>Currently involved in the early stages of the product for a card-based in-house web platform related to the creative industry for story-writing, education and entertainment purposes under Shared Experience Art Machine.</>),
-      role: (<ul>
-        <li>Perform 3 job responsibilities, which are design, development and testing.</li>
-        <li>Design more than 30 user interfaces with UX input using Figma based on the stakeholder's requirements</li> 
-        <li>Develop the product's front-end where the platform uses MERN stack (MongoDB, ExpressJS, ReactJS and NodeJS)</li> 
-        <li>Write down functional test cases for development and design to refer to</li> 
-        </ul>),
-      date: "Ongoing"
-    },
-    {
-      img: (<img className={classes.modalImg} src={p1}/>),
-      title: "PixiPixi",
-      description: (<>A proof of concept marketplace using NFT (Non-fungible Token) and Blockchain technology. Currently involved since the early stages of the product.</>),
-      role: (<ul>
-        <li>Perform 2 job responsibilities, which are design and development.</li>
-        <li>Design more than 5 user interfaces with UX input using Figma based on the client's requirements</li> 
-        <li>Develop the product's front end that uses a MERN-typescript stack (MongoDB, Express TS, React TS and Node JS) with solidity to handle the blockchain functionality of the platform for an in-house software</li> 
-        </ul>),
-      date: "Ongoing"
-    }
-  ]
 
   const scroll = (div) =>{
     $('html, body').animate({
@@ -72,28 +29,29 @@ function App(props) {
   };
 
   return (
-    <div>
-      <Suspense fallback={
-        <div className="loadingScreen">
-          <div className="wrapper">
-            <div className="circle" style={{background:"#F7D9DB"}}></div>
-            <div className="circle" style={{background:"#EA7779"}}></div>
-            <div className="circle" style={{background:"#C0CBE9"}}></div>
-            <div className="shadow"></div>
-            <div className="shadow"></div>
-            <div className="shadow"></div>
-            <span>loading</span>
-          </div>
-        </div>}
-      >
-      
-      <Web
-        workContent={workContent}
-        scroll = {scroll}
-        classes={classes}
-      />
-      </Suspense> 
-    </div>
+    <StylesProvider injectFirst>
+      <div>
+        <Suspense fallback={
+          <div className="loadingScreen">
+            <div className="wrapper">
+              <div className="circle" style={{background:"#F7D9DB"}}></div>
+              <div className="circle" style={{background:"#EA7779"}}></div>
+              <div className="circle" style={{background:"#C0CBE9"}}></div>
+              <div className="shadow"></div>
+              <div className="shadow"></div>
+              <div className="shadow"></div>
+              <span>loading</span>
+            </div>
+          </div>}
+        >
+        
+        <Web
+          scroll = {scroll}
+          classes={classes}
+        />
+        </Suspense> 
+      </div>
+    </StylesProvider>
   );
 }
 

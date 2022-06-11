@@ -24,11 +24,12 @@ function Web(props) {
       id: 1, 
       date: "Apr 2021",
       title: "PixiPixi",
-      img: (<img className={classes.img} src={p1}/>),
-      desc: "A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia.",
+      img: (<img className={classes.img} src={p1} alt="PixiPixi"/>),
+      desc: "A proof of concept marketplace using NFT (Non-fungible Token) and Blockchain technology.",
       moreDesc: (<ul>
-        <li>Designed the system's architecture and optimal userflows based on the requirements found from the background study research</li> 
-        <li>Developed the platform end  to end using WAMP stack (Windows, Apache, MySQL and PHP) with Javascript, JQuery, HTML5 and CSS</li> 
+        <li>Perform 2 job responsibilities, which are design and development.</li>
+        <li>Design more than 5 user interfaces with UX input using Figma based on the client's requirements</li> 
+        <li>Develop the product's front end that uses a MERN-typescript stack (MongoDB, Express TS, React TS and Node JS) with solidity to handle the blockchain functionality of the platform for an in-house software</li> 
         </ul>),
       showMore: false
     },
@@ -36,7 +37,7 @@ function Web(props) {
       id: 2, 
       date: "Apr 2021",
       title: "Jamit!",
-      img: (<img className={classes.img} src={j1}/>),
+      img: (<img className={classes.img} src={j1} alt="Jamit"/>),
       desc: "A card-based web platform for the creative industry for education and entertainment purposes.",
       moreDesc: (<ul>
         <li>Perform 3 job responsibilities, which are design, development and testing.</li>
@@ -50,12 +51,11 @@ function Web(props) {
       id: 3, 
       date: "Jul 2019",
       title: "Traffic Reporting System",
-      img: (<img className={classes.img} src={trs1}/>),
+      img: (<img className={classes.img} src={trs1} alt="Traffic Reporting System"/>),
       desc: "A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia.",
       moreDesc: (<ul>
-        <li>Perform 2 job responsibilities, which are design and development.</li>
-        <li>Design more than 5 user interfaces with UX input using Figma based on the client's requirements</li> 
-        <li>Develop the product's front end that uses a MERN-typescript stack (MongoDB, Express TS, React TS and Node JS) with solidity to handle the blockchain functionality of the platform for an in-house software</li> 
+        <li>Designed the system's architecture and optimal userflows based on the requirements found from the background study research</li> 
+        <li>Developed the platform end  to end using WAMP stack (Windows, Apache, MySQL and PHP) with Javascript, JQuery, HTML5 and CSS</li> 
         </ul>),
       showMore: false
     }
@@ -72,6 +72,54 @@ function Web(props) {
       }
     )
   });
+  const skill = {
+    title: "skill",
+    skillList: [
+      {
+        id: 1, 
+        icon: (<Brush className={classes.icon}/>),
+        iconColor: "#99A5D8",
+        bgColor: "#B8C5EF",
+        desc: [
+        {
+          title: "I enjoy designing",
+          desc: "UX, UI, Web, Mobile" },
+        {
+          title: "Design tools I use",
+          desc: "Photoshop, Figma"
+        }]
+      },
+      {
+        id: 2, 
+        icon: (<Code className={classes.icon}/>),
+        iconColor: "#DAA2AC",
+        bgColor: "#FFE8EC",
+        desc: [
+        {
+          title: "Languages I speak",
+          desc: "HTML5, CSS, Javascript /Typescript, Python, PHP, SQL",
+        },
+        {
+          title: "Frameworks I use",
+          desc: "Angular, React JS, Bootstrap, JQuery"
+        }]
+      }
+    ]
+  }
+
+  const designSkill = {
+    t1: "I enjoy designing",
+    desc1: "UX, UI, Web, Mobile",
+    t2: "Design tools I use",
+    desc2: "Photoshop, Figma"
+  }
+  
+  const techSkill = {
+    t1: "Languages I speak",
+    desc1: "HTML5, CSS, Javascript /Typescript, Python, PHP, SQL",
+    t2: "Frameworks I use",
+    desc2: "Angular, React JS, Bootstrap, JQuery"
+  }
 
   const footerList = [
     {id: 1, label: "email", link: "mailto:lisnadyaz@gmail.com", icon:(<MailOutline />)}, 
@@ -83,6 +131,87 @@ function Web(props) {
     {id: 3, label: "skills", id: "skills"}];
 
   
+  const getSkills = () => {
+    return (
+        <>
+          <Grid container style={{marginBottom:"10px"}}>
+            <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
+              {skill.title}
+            </Typography>
+          </Grid>
+          {
+            skill.skillList.map(a =>{
+              return (
+                <Grid container justify="center" alignItems="flex-start" style={{padding:"30px",height:"250px", margin: a.id === 1 ? "0 5px 0 0" : "0 0 0 5px", width:"calc(50% - 5px)", float:"left", background:a.bgColor, borderRadius:"5px"}}>
+                  <Grid item xs={12}>
+                    <div style={{background:a.iconColor, padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
+                        {a.icon}
+                    </div>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography className={classes.fontBody} style={{textAlign:"center"}}>
+                      {
+                        a.desc.map(b =>{
+                          return (
+                            <span>
+                              <b>{b.title}</b>
+                              <br/>
+                              {b.desc}
+                              <br/>
+                            </span>
+                          )
+                        })
+                      }
+                    </Typography>
+                  </Grid>
+                </Grid>
+              )
+            })
+          }
+      </>
+    )
+  }
+
+  const getSmallSkills = () => {
+    return (
+        <>
+          <Grid item xs={12} style={{marginBottom:"10px"}}>
+            <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
+            {skill.title}
+            </Typography>
+          </Grid>
+          {
+            skill.skillList.map(a =>{
+              return (
+                <Grid container justify="flex-start" alignItems="center" style={{padding:"10px",marginBottom:"10px",background:a.bgColor, borderRadius:"5px"}}>
+                  <div style={{width:"80px"}}>
+                    <div style={{background: a.iconColor, padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
+                        {a.icon}
+                    </div>
+                  </div>
+                  <div style={{width:"calc(100% - 80px)"}}>
+                  <Typography className={classes.fontBody} style={{textAlign:"left"}}>
+                      {
+                        a.desc.map(b =>{
+                          return (
+                            <span>
+                              <b>{b.title}</b>
+                              <br/>
+                              {b.desc}
+                              <br/>
+                            </span>
+                          )
+                        })
+                      }
+                  </Typography>
+                </div>
+              </Grid>
+              )
+            })
+          }
+      </>
+    )
+  }
 
   const getFooterMenuList = () => {
     return footerList.map(a =>{
@@ -181,7 +310,7 @@ function Web(props) {
       </AppBar>
       <Grid container justify="center" alignItems={"flex-start"} style={{margin:"auto", position:"relative", zIndex:"2"}}>
         <Grid container alignItems={"center"} style={{position:"relative", height:"100px"}}>
-          <img style={{width:"100%", height:"100px", position:"absolute", zIndex:"1"}} src={header}/>
+          <img style={{width:"100%", height:"100px", position:"absolute", zIndex:"1"}} src={header} alt="cat"/>
           <Typography className={classes.fontBodyHeader} style={{width: "100%", textAlign:"center", zIndex:"2"}}>
             <span style={{background:"#EA7779", color:"white", padding:"0 10px"}}>
               Hi, I am Lis Nadya.
@@ -207,92 +336,20 @@ function Web(props) {
       {/* Skills */}
       {
         !isSmall ? 
-        <div id="skills" className={classes.skills} style={{height:"250px"}}>
-        <Grid container style={{marginBottom:"20px"}}>
-          <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
-            skills
-          </Typography>
-        </Grid>
-        <Grid container justify="center" alignItems="flex-start" style={{padding:"30px",minHeight:"200px", marginRight:"5px",width:"calc(50% - 5px)", float:"left", background:"#B8C5EF", borderRadius:"5px"}}>
-          <Grid item xs={12}>
-            <div style={{background:"#99A5D8", padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
-                <Brush className={classes.icon}/>
-            </div>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography className={classes.fontBody} style={{textAlign:"center"}}>
-              <b>I enjoy designing</b><br/>
-              UX, UI, Web, Mobile<br/>
-
-              <b>Design tools I use</b><br/>
-              Photoshop, Figma
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid container justify="center" alignItems="center" style={{minHeight:"200px", padding:"20px", width:"calc(50% - 5px)", marginLeft:"5px", float:"left", background:"#FFE8EC", borderRadius:"5px"}}>
-          <Grid item xs={12}>
-            <div style={{background:"#DAA2AC", padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
-                <Code className={classes.icon}/>
-            </div>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography className={classes.fontBody} style={{textAlign:"center"}}>
-              <b>Languages I speak</b><br/>
-              HTML5, CSS, Javascript /Typescript, Python, PHP, SQL<br/>
-
-              <b>Frameworks I use</b><br/>
-              Angular, React JS, Bootstrap, JQuery
-            </Typography>
-          </Grid>
-        </Grid>
-      </div>
+        <div id="skills" className={classes.skills} style={{height:"280px", position:"relative", display:"block", }}>
+        {getSkills()}
+        </div>
       :
-      <Grid id="skills" container className={classes.skills} style={{maxWidth:"500px"}} justify="center" alignItems="center">
-        <Grid item xs={12} style={{marginBottom:"20px"}}>
-          <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
-            skills
-          </Typography>
+        <Grid id="skills" container className={classes.skills} style={{maxWidth:"500px"}} justify="center" alignItems="center">
+          {getSmallSkills()}
         </Grid>
-        <Grid container justify="flex-start" alignItems="center" style={{padding:"10px",marginBottom:"10px",background:"#B8C5EF", borderRadius:"5px"}}>
-          <div style={{width:"80px"}}>
-            <div style={{background:"#99A5D8", padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
-                <Brush className={classes.icon}/>
-            </div>
-          </div>
-          <div style={{width:"calc(100% - 80px)"}}>
-            <Typography className={classes.fontBody} style={{textAlign:"left"}}>
-              <b>I enjoy designing</b><br/>
-              UX, UI, Web, Mobile<br/>
-
-              <b>Design tools I use</b><br/>
-              Photoshop, Figma
-            </Typography>
-          </div>
-        </Grid>
-        <Grid container justify="flex-start" alignItems="center" style={{padding:"10px", background:"#FFE8EC", borderRadius:"5px"}}>
-          <div style={{width:"80px"}}>
-            <div style={{background:"#DAA2AC", padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
-                <Code className={classes.icon}/>
-            </div>
-          </div>
-          <div style={{width:"calc(100% - 80px)"}}>
-            <Typography className={classes.fontBody} style={{textAlign:"left"}}>
-              <b>Languages I speak</b><br/>
-              HTML5, CSS, Javascript /Typescript, Python, PHP, SQL<br/>
-
-              <b>Frameworks I use</b><br/>
-              Angular, React JS, Bootstrap, JQuery
-            </Typography>
-          </div>
-        </Grid>
-      </Grid>
       }
 
       {/* My Recent Work */}
       <Grid id="work" container style={{margin:"auto", maxWidth:"500px", padding:"20px"}} justify="center" alignItems="center">
-        <Grid item xs={12} style={{marginBottom:"20px"}}>
+        <Grid item xs={12} style={{marginBottom:"10px"}}>
           <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
-            recent work
+            recent projects
           </Typography>
         </Grid>
          {/* List of Works */}
