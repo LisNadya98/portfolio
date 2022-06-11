@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
     topBar:{
         background: white,
-        boxShadow:`0 0 2px rgba(0, 0, 0, 0.25)`,
+        boxShadow:`0 0 2px rgba(0, 0, 0, 0.5)`,
         padding:"0.2rem 0",
         position:"sticky",
         width:"100%",
