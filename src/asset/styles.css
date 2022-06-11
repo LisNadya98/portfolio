@@ -10,12 +10,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #7CBBB0; 
+    background: #ffc8c6; 
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #54a093; 
+    background: #ffaeab; 
 }
 
 #avatar{
@@ -198,9 +198,12 @@
 .wrapper span{
     position: absolute;
     top:75px;
+    width:150px;
     font-size: 1.25rem;
-    letter-spacing: 12px;
+    letter-spacing: 2px;
     color: #282A33;
+    text-align: center;
+    font-family: Nunito Sans, sans-serif;
     left:15%;
 }
 

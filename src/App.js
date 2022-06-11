@@ -1,8 +1,6 @@
 import './App.css';
 import React, {useState, useEffect, Suspense } from 'react';
-import {IconButton, 
-  Grid,
-  Typography} from '@material-ui/core';
+import {IconButton, Grid, Typography} from '@material-ui/core';
 import {CloseRounded} from '@material-ui/icons';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {useStyles} from './asset/styles';
@@ -67,117 +65,33 @@ function App(props) {
     }
   ]
 
-  const handleOpen = (i) => {
-    setOpen(true);
-    setOpenModal(i);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const scroll = (div) =>{
     $('html, body').animate({
         scrollTop: $(div).offset().top
     }, 1000);
   };
 
-
-  const modal = (i) =>{
-    return (
-        <div className={isSmall ? classes.paperSmall : classes.paper}>
-          <Grid container justify="center" alignItems="center" className={classes.modalSection} style={{borderBottom:"1px solid #C4C4C4"}}>
-            <Grid item xs={8}>
-              <Typography className={classes.fontBodyH3} style={{textAlign:"left", margin:"0"}}>
-                {workContent[i].title}
-              </Typography>
-
-            </Grid>
-            <Grid item xs={4}>
-              <IconButton  style={{padding:"0.5rem", float:"right"}} onClick={()=>handleClose()}>
-                <CloseRounded/>
-              </IconButton>
-            </Grid>
-          </Grid>
-          <div className={isSmall ? classes.paperContentSmall : classes.paperContent} >
-            <div style={{textAlign:'center', marginBottom:"1rem"}}>
-              {workContent[i].img}
-            </div>
-            <Typography className={classes.fontBodyH4}>
-              Project Description
-            </Typography>
-            <Typography className={classes.fontBody} style={{marginBottom:"1rem"}}>
-              {workContent[i].description}
-            </Typography>
-            <Typography className={classes.fontBodyH4}>
-              My Role
-            </Typography>
-            <Typography className={classes.fontBody} style={{marginBottom:"1rem"}}>
-              {workContent[i].role}
-            </Typography>
-          </div>
-          <div className={classes.modalSection} style={{borderTop:"1px solid #c0c0c0"}}>
-            <Typography className={classes.fontModalFooter} style={{textAlign:"left", margin:"0"}}>
-            {workContent[i].date}
-            </Typography>
-          </div>
-        </div>
-    )
-  };
-
-  useEffect(() => {
-    window.matchMedia("(max-width: 790px)").addListener(
-      e=>{
-        if (e.matches) { 
-          console.log("small")
-          setIsSmall(true)
-        } else {
-          setIsSmall(false)
-        }
-      }
-    )
-  });
-
-  
-
   return (
     <div>
       <Suspense fallback={
-        <div class="loadingScreen">
-          <div class="wrapper">
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="shadow"></div>
-            <div class="shadow"></div>
-            <div class="shadow"></div>
-            <span>Loading</span>
+        <div className="loadingScreen">
+          <div className="wrapper">
+            <div className="circle" style={{background:"#F7D9DB"}}></div>
+            <div className="circle" style={{background:"#EA7779"}}></div>
+            <div className="circle" style={{background:"#C0CBE9"}}></div>
+            <div className="shadow"></div>
+            <div className="shadow"></div>
+            <div className="shadow"></div>
+            <span>loading</span>
           </div>
         </div>}
       >
-      {isSmall ? 
-        
-        <Mobile 
-          workContent={workContent}
-          scroll = {scroll}
-          handleClose={handleClose}
-          handleOpen={handleOpen}
-          classes={classes}
-          open={open}
-          modal={modal}
-          openModal={openModal}
-        />
-        :
-        <Web
-          workContent={workContent}
-          scroll = {scroll}
-          handleClose={handleClose}
-          handleOpen={handleOpen}
-          classes={classes}
-          open={open}
-          modal={modal}
-          openModal={openModal}
-        />}
+      
+      <Web
+        workContent={workContent}
+        scroll = {scroll}
+        classes={classes}
+      />
       </Suspense> 
     </div>
   );

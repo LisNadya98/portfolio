@@ -1,23 +1,23 @@
 import { makeStyles } from '@material-ui/core/styles';
+const fontFamily = "Nunito Sans, sans-serif";
 const fontSmall = "0.8rem";
-const fontBody = "1rem";
+const fontBody = "12px";
 const fontH4 = "1.1rem";
-const fontH3 = "1.25rem";
+const fontH3 = "14px";
 const fontH2 = "2rem";
 const fontH1 = "1.75rem";
-const black = "#282A33";
+const black = "#3E3E3E";
 const darkBg = "#E8DDD6";
 const brightBg = "#F5F5F3";
 const green = "#7CBBB0";
 const red ="#E86C45";
 const white = "#FFF";
+const greyBg = "#C2C2C2";
+const pink = "#DAA2AC";
+const blue = "#99A5D8";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
-        overflowY:"auto",
-        background:brightBg,
-        overflowX:"hidden",
     },
 
     menuButton: {
@@ -25,13 +25,17 @@ const useStyles = makeStyles((theme) => ({
     },
 
     menuIcon:{
-        color: black,
+        color: greyBg,
     },
 
     topBar:{
-        background:darkBg,
-        boxShadow:"none",
-        padding:"0.5rem",
+        background: white,
+        boxShadow:`0 0 2px rgba(0, 0, 0, 0.25)`,
+        padding:"0.2rem 0",
+        position:"sticky",
+        width:"100%",
+        position:"0",
+        zIndex:"10"
     },
 
     link:{
@@ -43,20 +47,20 @@ const useStyles = makeStyles((theme) => ({
     },
 
     fontTopPanel:{
-        fontFamily:"Quicksand, sans-serif",
+        fontFamily: fontFamily,
         fontSize:fontBody,
         fontWeight:"bold",
-        color:black,
+        color:white,
     },
 
     fontBody:{
-        fontFamily:"Open Sans, sans-serif",
+        fontFamily: fontFamily,
         fontSize:fontBody,
         color:black,
     },
 
     fontBodyH2:{
-        fontFamily:"Open Sans, sans-serif",
+        fontFamily: fontFamily,
         fontSize:fontH2,
         color:black,
         fontWeight:"bold",
@@ -64,15 +68,16 @@ const useStyles = makeStyles((theme) => ({
     },
 
     fontBodyH3:{
-        fontFamily:"Open Sans, sans-serif",
+        fontFamily: fontFamily,
         fontSize:fontH3,
-        marginBottom:fontBody,
-        color:black,
+        margin:"10px 0",
+        color:pink,
         fontWeight:"bold",
+        borderBottom:"0.5px solid #C2C2C2"
     },
 
     fontBodyH4:{
-        fontFamily:"Open Sans, sans-serif",
+        fontFamily: fontFamily,
         fontSize:fontH4,
         marginBottom:fontBody,
         color:black,
@@ -80,18 +85,45 @@ const useStyles = makeStyles((theme) => ({
     },
 
     fontModalFooter:{
-        fontFamily:"Open Sans, sans-serif",
+        fontFamily: fontFamily,
         fontSize:fontSmall,
         marginBottom:fontBody,
-        color:"#C4C4C4",
+        color:"#FDF9F9",
+        borderTop:"0.5px solid #C2C2C2"
     },
 
     fontBodyHeader:{
-        fontFamily:"Open Sans, sans-serif",
+        fontFamily: fontFamily,
         fontWeight:"bold", 
-        fontSize:"64px",
+        fontSize:"16px",
         color:black,
     },
+
+    fontSmall: {
+        fontFamily: fontFamily,
+        fontStyle:"italic",
+        fontSize:"12px",
+        color:blue,
+        marginTop:"10px",
+        marginBottom:"0"
+    },
+
+    postTime: {
+        fontFamily: fontFamily,
+        fontSize:"10px",
+        color:"#9D9D9D",
+        textAlign:"center",
+        padding:"10px"
+    },
+
+    postTitle: {
+        fontFamily: fontFamily,
+        fontWeight:"bold",
+        fontSize:"12px",
+        color:"#757575",
+        padding:"10px"
+    },
+
 
     about:{
         position:"relative",
@@ -117,12 +149,10 @@ const useStyles = makeStyles((theme) => ({
     },
 
     skills:{
-        maxWidth:"1200px",
-        margin:"auto",
-        marginBottom:"3rem",
-        borderRadius:fontBody,
-        background:white,
-        border:"1px solid #D2D2D2",
+        margin:"auto", 
+        maxWidth:"460px",
+        padding:"20px",
+        position:"relative"
     },
     line:{
         margin:"2rem auto", 
@@ -133,8 +163,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     icon:{
-        fontSize:"50px", 
-        color:green
+        fontSize:"30px", 
+        color:white
     },
 
     h4:{
@@ -143,24 +173,22 @@ const useStyles = makeStyles((theme) => ({
 
     work:{
         position:"relative",
-        width:"calc(100% - 6rem)",
-        padding:"3rem",
+        width:"calc(100% - 20px)",
+        padding:"0.5rem",
         overflow:"hidden",
         background:white,
-        borderRadius:fontBody,
-        border:"1px solid #c4c4c4",
+        borderRadius:"5px",
+        border:"0.5px solid #C2C2C2",
         transition:"0.5s",
         cursor:"pointer",
-        '&:hover':{
-            boxShadow:"0 0 4px #c4c4c4",
-            transform:"scale(0.95)"
-        }
+        // '&:hover':{
+        //     boxShadow:"0 0 4px #c4c4c4",
+        //     transform:"scale(0.95)"
+        // }
     },
 
     img:{
-        width:"100%",
-        minHeight:"200px",
-        marginBottom:fontBody
+        width:"100%"
     },
 
     imgMedium:{
@@ -178,12 +206,13 @@ const useStyles = makeStyles((theme) => ({
     },
 
     footer:{
-        background:black,
-        padding:"3rem 0",
+        background:"#FDF9F9",
+        borderTop:"0.5px solid #C2C2C2",
+        padding:"20px 0"
     },
 
     footerContent:{
-        maxWidth:"1200px",
+        maxWidth:"460px",
         margin:"auto",
         padding:"0 1rem"
     },
@@ -215,105 +244,33 @@ const useStyles = makeStyles((theme) => ({
         transition:"0.5s",
     },
 
-    avatarBg:{
-        position:"absolute",
-        display: "block",
-        margin:"auto",
-        top:"-180px",
-        right:"50px",
-        marginTop:"0px", 
-        width: "350px",
-        height: "350px",
-        zIndex:"1",
-        background: "#97908B",
-        borderRadius: "70% 85% 75% 95% / 70% 80% 90% 85%"
-    },
-
-    avatarBgSmall:{
-        position:"relative",
-        display: "block",
-        margin:"auto",
-        marginTop:"-200px", 
-        width: "220px",
-        height: "220px",
-        zIndex:"1",
-        background: "#97908B",
-        borderRadius: "70% 85% 75% 95% / 70% 80% 90% 85%"
-    },
-
-    modal: {
-        width:"100vW",
-        height:"100vH",
-        overflowY:"auto",
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    wrapper:{
-        width:"100vW",
-        height:"100vH",
-        overflowY:"auto",
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-    },
-    
-    paper: {
-        position:"relative",
-        background: white,
-        borderRadius:fontBody,
-        maxWidth:"600px",
-        maxHeight:"95vH",
-        overflowY:"auto",
-        outline:"none",
-    },
-
-    paperSmall: {
-        position:"relative",
-        background: white,
-        margin:"1rem",
-        borderRadius:fontBody,
-        maxWidth:"600px",
-        top:"0",
-        outline:"none",
-    },
-
-    paperContent:{
-        maxWidth:"calc(600px - 4rem)",
-        maxHeight:"calc(95vH - 16rem)",
-        padding:"1rem 2rem",
-        overflow:"auto",
-    },
-
-    paperContentSmall:{
-        maxWidth:"calc(600px - 4rem)",
-        padding:"1rem 2rem",
-        overflow:"visible",
-    },
-
-    modalImg:{
-        width:"100%",
-        marginBottom:fontBody
-    },
-
-    modalSection:{
-        padding:"1rem 2rem",
-    
-    },
-
-    list: {
-        width: 250,
-    },
-
-    fullList: {
-        width: 'auto',
-    },
-
     listText:{
-        fontFamily:"Quicksand, sans-serif",
-        fontSize:"1rem",
+        fontFamily: fontFamily,
+        fontSize:"12px",
         color:"#282A33"
+    },
+
+    headerBtn: {
+        borderRadius:"5px", 
+        padding:"5px 10px", 
+        fontSize:"10px", 
+        background:"#BFC1C7",
+        color:"#fff", 
+        float:"right",
+        letterSpacing: "0",
+        transition:"0.5s",
+        '&:hover':{
+            background: "#A9AEB9",
+            letterSpacing: "5px"
+        }
+    },
+
+    footerBtn:{
+        border:"0.5px solid #9D9D9D", 
+        borderRadius:"10px", 
+        padding:"5px 10px", 
+        fontSize:"10px", 
+        color:"#9D9D9D"
     }
 }));
 

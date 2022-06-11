@@ -1,35 +1,91 @@
 import '../App.css';
 import React from 'react';
-import {IconButton, 
+import {Button,
   Toolbar,
   AppBar, 
   Grid,
-  Typography,
-  Fade,
-  Backdrop,
-  Modal} from '@material-ui/core';
+  Typography} from '@material-ui/core';
 import {Brush, Code, LinkedIn, MailOutline} from '@material-ui/icons';
 import MenuDrawer from './menu';
 import '../asset/styles.css';
 
 
 import avatar from "../element/avatar.png";
-import work1 from "../element/work1.png";
-import work2 from "../element/work2.png";
-import work3 from "../element/work3.png";
-import leaf1 from "../element/leaf1.png";
-import leaf2 from "../element/leaf2.png";
+import cat from "../element/cat.jpg";
+import header from "../element/header.png";
+import j1 from "../element/j1.png";
+import p1 from "../element/p1.png";
+import trs1 from "../element/trs1.png";
+
 
 function Mobile(props) {
   const {classes, handleClose, handleOpen, scroll, open, modal, openModal} = props
   
+  const workList = [
+    {
+      date: "Apr 2021",
+      title: "PixiPixi",
+      img: (<img className={classes.img} src={p1}/>),
+      desc: "A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia.",
+      moreDesc: "",
+    },
+    {
+      date: "Apr 2021",
+      title: "Jamit!",
+      img: (<img className={classes.img} src={j1}/>),
+      desc: "A card-based web platform for the creative industry for education and entertainment purposes.",
+      moreDesc: "",
+    },
+    {
+      date: "Jul 2019",
+      title: "Traffic Reporting System",
+      img: (<img className={classes.img} src={trs1}/>),
+      desc: "A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia.",
+      moreDesc: "",
+    }
+  ]
+  
+  const getWorkPost = () => {
+    return workList.map(a => {
+      return (
+      <Grid item xs={12} style={{marginBottom:"1rem"}}>
+        <div className={classes.work} onClick={()=>handleOpen(0)}>
+          <Grid container justify="center" alignItems="center" style={{background:"#FAFAFA", border:"0.5px solid #BBBBBB", borderRadius:"5px", marginBottom:"10px"}}>
+            <Grid item xs={4} style={{borderRight:"0.5px solid #BBBBBB"}}>
+              <Typography className={classes.postTime}>
+                {a.date}
+              </Typography>
+            </Grid>
+            <Grid item xs={8}>
+              <Typography className={classes.postTitle}>
+                {a.title}
+              </Typography>
+            </Grid>
+          </Grid>
+          {a.img}
+          <div className={classes.workContent} style={{height:"auto"}}>
+            <Typography className={classes.fontBodyH3}>
+              Description
+            </Typography>
+            <Typography className={classes.fontBody} >
+              {a.desc}
+            </Typography>
+            <Typography className={classes.fontSmall} >
+              Show more.
+            </Typography>
+          </div>
+        </div>
+      </Grid>
+    )})
+  }
+
   return (
     <div className={classes.root}>
-      <AppBar id="about" position="static" className={classes.topBar} style={{position:"relative", zIndex:"2", background:"#E8DDD6", boxShadow:"none", padding:"0.5rem",}}>
+      <AppBar id="about" position="sticky" className={classes.topBar}>
         <Toolbar variant="dense">
           <Grid container justify="center" alignItems="flex-start">
             <Grid item xs={6}>
-              <div style={{float:"left", border:"2px solid #282A33", height:"28px", width:"28px", marginRight:"10px"}}>
+              <div style={{float:"left", background:"linear-gradient(to bottom right, #99A5D8, #FFE8EC)", height:"28px", width:"28px", margin:"5px 10px 0 0"}}>
                 <Typography className={classes.fontTopPanel} style={{lineHeight:"28px", textAlign:"center"}}>
                   LN
                 </Typography>
@@ -43,197 +99,108 @@ function Mobile(props) {
           </Grid>
         </Toolbar>
       </AppBar>
-
-      <div className={classes.aboutSmall} style={{minHeight:"450px"}} >
-        <div style={{position:"absolute", zIndex:"1", top:"4rem", right:"0"}}>
-          <img style={{width:"100px"}} src={leaf1}/>
-        </div>
-        <div style={{position:"absolute", zIndex:"1", top:"500px", left:"0"}}>
-          <img style={{width:"100px"}} src={leaf2}/>
-        </div>
-        <Grid container justify="center" alignItems={"flex-start"} style={{width:"100vW", padding:"1rem", height: "480px", margin:"auto", position:"relative", zIndex:"2"}}>
-          
-          <Grid item xs={12} style={{position:"relative", height:"250px"}}>
-            <div style={{marginTop:"2rem", marginBottom:"-2rem"}}>
-              <div style={{position:"absolute", width:"100%"}}>
-                <div id={"avatarImgSmall"}>
-                  <img style={{width:"220px"}} src={avatar}/>
-                </div>
-              </div>
-              <div id={"avatarSmall"}></div>
-              <div className={classes.avatarBgSmall}>
-              </div>
-            </div>
-          </Grid>
-          <Grid item xs={12} style={{marginTop:"2rem"}}>
-            <Typography className={classes.fontBodyHeader} style={{textAlign:"center", fontSize:"2rem"}}>
-              Hi, I am <span style={{color:"#7CBBB0"}}>Lis Nadya</span>
-            </Typography>
-            <Typography className={classes.fontBody} style={{textAlign:"center", marginTop:"20px"}}>
-              I am a front-end developer with one year of working experience at Shared Experience Art Machine, LLC. 
-              I graduated with First Class Honors in Bachelor of Computer Science (Hons.). 
-              I continuously work on improving my skills at solving one design problem at a time. 
-              My passion in design and bringing them to life fuels my daily motivation to accomplish my tasks.
-            </Typography>
-          </Grid>
-          
-          
+      <Grid container justify="center" alignItems={"flex-start"} style={{margin:"auto", position:"relative", zIndex:"2"}}>
+        <Grid container xs={12} alignItems={"center"} style={{position:"relative", height:"100px"}}>
+          <img style={{width:"100%", height:"100px", position:"absolute", zIndex:"1"}} src={header}/>
+          <Typography className={classes.fontBodyHeader} style={{width: "100%", textAlign:"center", zIndex:"2"}}>
+            <span style={{background:"#EA7779", color:"white", padding:"0 10px"}}>
+              Hi, I am Lis Nadya.
+            </span>
+          </Typography>
         </Grid>
-      </div>
-      <div className={classes.aboutSlant}>
-      </div>
-
-      {/* Skills */}
-      <div id="skills" style={{margin:"-15rem 1rem 3rem 1rem",padding:"2rem 0"}}>
-        <Grid container className={classes.skills} justify="center" alignItems="center">
-          <Grid item xs={12} style={{padding:"3rem"}}>
-            <Typography className={classes.fontBody} style={{textAlign:"center"}}>
-              <Brush className={classes.icon} style={{marginTop:"10px", marginBottom:"-10px"}}/>
-            </Typography>
-            <div className={classes.line}></div>
-            <Typography className={classes.fontBody} style={{fontSize:"24px", fontWeight:"bold",textAlign:"center"}}>
-              Designer
-            </Typography>
-
-            <Typography className={classes.fontBody} style={{textAlign:"center"}}>
-              <br/>
-              <span className={classes.h4}>What I enjoy designing:</span><br/>
-              UX, UI, Web, Mobile<br/><br/><br/>
-
-              <span className={classes.h4}>Design tools I use:</span><br/>
-              Photoshop, Figma
-            </Typography>
-          </Grid>
-          <Grid item xs={12} style={{padding:"3rem",borderTop:"1px solid #D2D2D2"}}>
-            <div style={{border:"5px solid #7CBBB0", borderRadius:"10px", margin:"auto", width:"4rem", height:"3rem"}}>
-              <Typography className={classes.fontBody} style={{textAlign:"center"}}>
-                <Code className={classes.icon}/>
+        <Grid container justify="center" alignItems={"flex-start"} style={{position:"relative", padding:"20px", background:"white", borderBottom:"0.5px solid #C2C2C2"}}>
+          <Grid container style={{margin:"auto", maxWidth:"420px", position:"relative"}}>
+            <Grid item xs={8}>
+              <Typography className={classes.fontBody} style={{textAlign:"left"}}>
+                A front-end developer with over 2 years of working experience, which includes developing and maintaining web applications.
               </Typography>
-            </div>
-            <div className={classes.line}></div>
-
-            <Typography className={classes.fontBody} style={{fontSize:"24px", fontWeight:"bold", textAlign:"center"}}>
-              Front-end Developer
-            </Typography>
-
-            <Typography className={classes.fontBody} style={{textAlign:"center"}}>
-              <br/>
-              <span className={classes.h4}>Languages I speak:</span><br/>
-              HTML5, CSS, Javascript, Java, Typescript, Python, PHP, C/C++, SQL<br/><br/>
-
-              <span className={classes.h4}>Frameworks I use:</span><br/>
-              React JS, Node JS, Bootstrap, JQuery
-            </Typography>
-          </Grid>
-        </Grid>
-      </div>
-
-
-      {/* My Recent Work */}
-      <Grid id="work" container style={{margin:"0 0 6rem 0"}} justify="center" alignItems="center">
-        <Grid item xs={12} style={{padding:"0 1rem"}}>
-          <Typography className={classes.fontBodyH2} style={{color:"#7CBBB0"}}>
-            My Recent Work
-          </Typography>
-          <Typography className={classes.fontBody} style={{textAlign:"center"}}>
-            These projects are either disclosed or are still under development.
-          </Typography>
-        </Grid>
-         {/* List of Works */}
-         
-        <Grid container justify="center" alignItems="center" style={{maxWidth:"calc(100% - 2rem)", margin:"3rem 0"}}>
-          <Grid item xs={12} style={{marginBottom:"1rem"}}>
-            <div className={classes.work} onClick={()=>handleOpen(0)}>
-              <img className={classes.img} src={work1}/>
-              <div className={classes.workContent} style={{height:"auto", minHeight:"130px"}}>
-                <Typography className={classes.fontBodyH3}>
-                  Traffic Reporting System
-                </Typography>
-                <Typography className={classes.fontBody} >
-                  A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia.
-                </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <div style={{padding:"5px", borderRadius: "100px", background:"white", position:"absolute", marginTop:"-60px", overflow:"hidden", right:"0", zIndex:"2"}}>
+                  <img style={{width:"80px", height:"80px", borderRadius: "100px"}} src={cat}/>
               </div>
-            </div>
-          </Grid>
-          <Grid item xs={12}  style={{marginBottom:"1rem"}}>
-            <div className={classes.work} onClick={()=>handleOpen(1)}>
-              <img className={classes.img} src={work2}/>
-              <div className={classes.workContent}  style={{height:"auto", minHeight:"130px"}}>
-                <Typography className={classes.fontBodyH3}>
-                  Jamit!
-                </Typography>
-                <Typography className={classes.fontBody}>
-                  A card-based web platform for the creative industry for education and entertainment purposes.
-                </Typography>
-              </div>
-            </div>
-          </Grid>
-          <Grid item xs={12}  style={{marginBottom:"1rem"}}>
-            <div className={classes.work} onClick={()=>handleOpen(2)}>
-              <img className={classes.img} src={work3}/>
-              <div className={classes.workContent}  style={{height:"auto",minHeight:"130px"}}>
-                <Typography className={classes.fontBodyH3}>
-                  PixiPixi
-                </Typography>
-                <Typography className={classes.fontBody}>
-                  A proof of concept marketplace using NFT (Non-fungible Token) and Blockchain technology 
-                </Typography>
-              </div>
-            </div>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
+      
+      {/* Skills */}
+      <Grid id="skills" container className={classes.skills} justify="center" alignItems="center">
+        <Grid item xs={12} style={{marginBottom:"20px"}}>
+          <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
+            skills
+          </Typography>
+        </Grid>
+        <Grid container xs={12} justify="flex-start" alignItems="center" style={{padding:"10px",marginBottom:"10px",background:"#B8C5EF", borderRadius:"5px"}}>
+          <div style={{width:"80px"}}>
+            <div style={{background:"#99A5D8", padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
+                <Brush className={classes.icon}/>
+            </div>
+          </div>
+          <div style={{width:"calc(100% - 80px)"}}>
+            <Typography className={classes.fontBody} style={{textAlign:"left"}}>
+              <b>I enjoy designing</b><br/>
+              UX, UI, Web, Mobile<br/>
+
+              <b>Design tools I use</b><br/>
+              Photoshop, Figma
+            </Typography>
+          </div>
+        </Grid>
+        <Grid container xs={12} justify="flex-start" alignItems="center" style={{padding:"10px", background:"#FFE8EC", borderRadius:"5px"}}>
+          <div style={{width:"80px"}}>
+            <div style={{background:"#DAA2AC", padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
+                <Code className={classes.icon}/>
+            </div>
+          </div>
+          <div style={{width:"calc(100% - 80px)"}}>
+            <Typography className={classes.fontBody} style={{textAlign:"left"}}>
+              <b>Languages I speak</b><br/>
+              HTML5, CSS, Javascript /Typescript, Python, PHP, SQL<br/>
+
+              <b>Frameworks I use</b><br/>
+              Angular, React JS, Bootstrap, JQuery
+            </Typography>
+          </div>
+        </Grid>
+      </Grid>
+
+
+      {/* My Recent Work */}
+      <Grid id="work" container style={{margin:"0 auto", padding:"20px", maxWidth:"460px",}} justify="center" alignItems="center">
+        <Grid item xs={12} style={{marginBottom:"20px"}}>
+          <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
+            recent work
+          </Typography>
+        </Grid>
+         {/* List of Works */}
+        <Grid container justify="center" alignItems="center">
+         {getWorkPost()}
+        </Grid>
+      </Grid>
+
+      {/* Contact */}
       <div id="contact"className={classes.footer}>
         <div className={classes.footerContent}>
-          <Typography className={classes.fontBodyH2} style={{color:"white"}}>
-            Contact Me
+          <Typography className={classes.fontBodyHeader} style={{textAlign:"center"}}>
+            contact me
           </Typography>
-          <Typography className={classes.fontBody} style={{textAlign:"center", color:"white"}}>
-            If you wanna get in touch, talk to me about a project collaboration or just say hi,
+          <Typography className={classes.fontBody} style={{color:"#9D9D9D", textAlign:"center"}}>
+            If you want to get in touch, talk to me about a project collaboration or just say hi,
             do send me an email or a message via
           </Typography>
           <Grid container justify="center" alignItems="center" style={{marginTop:"1rem"}}>
-            <Grid item spacing={2}>
-              <IconButton 
-                onClick={()=>{window.open(
-                                        'mailto:lisnadyaz@gmail.com',
-                                        '_blank' 
-                                        )}} 
-                className={classes.button}
-              >
-                <MailOutline className={classes.buttonIcon}/>
-              </IconButton>
-              <IconButton 
-                className={classes.button}
-                onClick={()=>{window.open(
-                  'https://www.linkedin.com/in/lisnadya/',
-                  '_blank' 
-                  )}} 
-              >
-                <LinkedIn className={classes.buttonIcon}/>
-              </IconButton>
+            <Grid item>
+              <Button onClick={()=>{window.open('mailto:lisnadyaz@gmail.com', '_blank')}} startIcon={<MailOutline />} style={{border:"0.5px solid #9D9D9D", borderRadius:"10px", marginRight:"10px", padding:"5px 10px", fontSize:"10px", color:"#9D9D9D"}}>
+                Email
+              </Button>
+              <Button onClick={()=>{window.open('https://www.linkedin.com/in/lisnadya/', '_blank')}} startIcon={<LinkedIn />} style={{border:"0.5px solid #9D9D9D", borderRadius:"10px", padding:"5px 10px", fontSize:"10px", color:"#9D9D9D"}}>
+                LinkedIn
+              </Button>
             </Grid>
           </Grid>
-          
         </div>
       </div>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        style={{alignItems:"flex-start"}}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          {modal(openModal)}
-        </Fade>
-      </Modal>
     </div>
   );
 }
