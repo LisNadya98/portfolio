@@ -287,7 +287,7 @@ function Web(props) {
         <Toolbar variant="dense">
           <Grid container justify="center" alignItems="flex-start">
             <Grid item xs={6}>
-              <div style={{float:"left", background: "linear-gradient(to bottom right, #99A5D8, #FFE8EC)", height:"28px", width:"28px", margin:"0"}}>
+              <div style={{float:"left", background: "linear-gradient(to bottom right, #99A5D8, #FFE8EC)", height:"28px", width:"28px", margin: isSmall ? "5px" : "0"}}>
                 <Typography className={classes.fontTopPanel} style={{lineHeight:"28px", textAlign:"center"}}>
                   LN
                 </Typography>
