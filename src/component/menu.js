@@ -7,7 +7,7 @@ import $ from 'jquery';
 
 
 export default function MenuDrawer(props) {
-  const {classes, scroll} = props;
+  const {classes, scroll, menu} = props;
   const [state, setState] = React.useState({
     top: false,
   });
@@ -26,17 +26,16 @@ export default function MenuDrawer(props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem button onClick={()=>scroll("#skills")}>
-            <ListItemText className={classes.listText} primary={"Skills"} />
-        </ListItem>
-        <Divider/>
-        <ListItem button onClick={()=>scroll("#work")}>
-            <ListItemText className={classes.listText} primary={"Work"} />
-        </ListItem>
-        <Divider/>
-        <ListItem button onClick={()=>scroll("#contact")}>
-            <ListItemText className={classes.listText} primary={"Contact"} />
-        </ListItem>
+        {
+          menu.map(a => {return (
+            <>
+              {a.link !== 'contact' && <Divider/>}
+              <ListItem button onClick={()=>scroll(`#${a.link}`)}>
+                  <ListItemText className={classes.listText} primary={`${a.label}`} />
+              </ListItem>
+            </>
+          )})
+        }
       </List>
     </div>
   );

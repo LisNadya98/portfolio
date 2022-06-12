@@ -102,16 +102,14 @@ const useStyles = makeStyles((theme) => ({
     fontSmall: {
         fontFamily: fontFamily,
         fontStyle:"italic",
-        fontSize:"12px",
+        fontSize: fontBody,
         color:blue,
         marginTop:"10px",
         marginBottom:"0",
-        letterSpacing:"0",
         cursor: "pointer",
         transition:"0.5s",
         '&:hover':{
             color:"darkBlue", 
-            letterSpacing:"2px"
         }
     },
 
@@ -126,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
     postTitle: {
         fontFamily: fontFamily,
         fontWeight:"bold",
-        fontSize:"12px",
+        fontSize: fontBody,
         color:"#757575",
         padding:"10px"
     },
@@ -195,7 +193,12 @@ const useStyles = makeStyles((theme) => ({
     },
 
     img:{
-        width:"100%"
+        width:"100%",
+        transition:"0.5s",
+        opacity: "1",
+        '&:hover':{
+            opacity: "0.8"
+        }
     },
 
     // imgMedium:{

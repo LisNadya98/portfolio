@@ -19,6 +19,8 @@ import trs1 from "../element/trs1.png";
 function Web(props) {
   const {classes, scroll} = props
   const [isSmall, setIsSmall] = useState( window.matchMedia("(max-width: 790px)").matches );
+  const [open, setOpen] = React.useState(false);
+
   const [workList, setworkList] = useState([
     {
       id: 1, 
@@ -27,9 +29,9 @@ function Web(props) {
       img: (<img className={classes.img} src={p1} alt="PixiPixi"/>),
       desc: "A proof of concept marketplace using NFT (Non-fungible Token) and Blockchain technology.",
       moreDesc: (<ul>
-        <li>Perform 2 job responsibilities, which are design and development.</li>
-        <li>Design more than 5 user interfaces with UX input using Figma based on the client's requirements</li> 
-        <li>Develop the product's front end that uses a MERN-typescript stack (MongoDB, Express TS, React TS and Node JS) with solidity to handle the blockchain functionality of the platform for an in-house software</li> 
+        <li>Performed 2 job responsibilities, which are design and development.</li>
+        <li>Designed more than 5 user interfaces with UX input using Figma based on the client's requirements</li> 
+        <li>Developed the product's front end that uses a MERN-typescript stack (MongoDB, Express TS, React TS and Node JS) with solidity to handle the blockchain functionality of the platform for an in-house software</li> 
         </ul>),
       showMore: false
     },
@@ -40,10 +42,10 @@ function Web(props) {
       img: (<img className={classes.img} src={j1} alt="Jamit"/>),
       desc: "A card-based web platform for the creative industry for education and entertainment purposes.",
       moreDesc: (<ul>
-        <li>Perform 3 job responsibilities, which are design, development and testing.</li>
-        <li>Design more than 30 user interfaces with UX input using Figma based on the stakeholder's requirements</li> 
-        <li>Develop the product's front-end where the platform uses MERN stack (MongoDB, ExpressJS, ReactJS and NodeJS)</li> 
-        <li>Write down functional test cases for development and design to refer to</li> 
+        <li>Performed 3 job responsibilities, which are design, development and testing.</li>
+        <li>Designed more than 30 user interfaces with UX input using Figma based on the stakeholder's requirements</li> 
+        <li>Developed the product's front-end where the platform uses MERN stack (MongoDB, ExpressJS, ReactJS and NodeJS)</li> 
+        <li>Wrote down functional test cases for development and design to refer to</li> 
         </ul>),
       showMore: false
     },
@@ -61,19 +63,16 @@ function Web(props) {
     }
   ])
   
-  useEffect(() => {
-    window.matchMedia("(max-width: 790px)").addListener(
-      e=>{
-        if (e.matches) { 
-          setIsSmall(true)
-        } else {
-          setIsSmall(false)
-        }
-      }
-    )
-  });
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
   const skill = {
-    title: "skill",
+    title: "Skills",
     skillList: [
       {
         id: 1, 
@@ -82,9 +81,11 @@ function Web(props) {
         bgColor: "#B8C5EF",
         desc: [
         {
+          id: 1, 
           title: "I enjoy designing",
           desc: "UX, UI, Web, Mobile" },
         {
+          id: 2, 
           title: "Design tools I use",
           desc: "Photoshop, Figma"
         }]
@@ -96,10 +97,12 @@ function Web(props) {
         bgColor: "#FFE8EC",
         desc: [
         {
+          id: 1, 
           title: "Languages I speak",
           desc: "HTML5, CSS, Javascript /Typescript, Python, PHP, SQL",
         },
         {
+          id: 2, 
           title: "Frameworks I use",
           desc: "Angular, React JS, Bootstrap, JQuery"
         }]
@@ -107,29 +110,26 @@ function Web(props) {
     ]
   }
 
-  const designSkill = {
-    t1: "I enjoy designing",
-    desc1: "UX, UI, Web, Mobile",
-    t2: "Design tools I use",
-    desc2: "Photoshop, Figma"
-  }
-  
-  const techSkill = {
-    t1: "Languages I speak",
-    desc1: "HTML5, CSS, Javascript /Typescript, Python, PHP, SQL",
-    t2: "Frameworks I use",
-    desc2: "Angular, React JS, Bootstrap, JQuery"
-  }
-
   const footerList = [
-    {id: 1, label: "email", link: "mailto:lisnadyaz@gmail.com", icon:(<MailOutline />)}, 
-    {id: 2, label: "linkedin", link: "https://www.linkedin.com/in/lisnadya/", icon:(<LinkedIn />)}];
+    {id: 1, label: "Email", link: "mailto:lisnadyaz@gmail.com", icon:(<MailOutline />)}, 
+    {id: 2, label: "LinkedIn", link: "https://www.linkedin.com/in/lisnadya/", icon:(<LinkedIn />)}];
 
   const menuList = [
-    {id: 1, label: "contact", id: "contact"}, 
-    {id: 2, label: "recent work", id: "work"}, 
-    {id: 3, label: "skills", id: "skills"}];
+    {id: 1, label: "Contact", link: "contact"}, 
+    {id: 2, label: "Recent projects", link: "work"}, 
+    {id: 3, label: "Skills", link: "skills"}];
 
+    useEffect(() => {
+      window.matchMedia("(max-width: 790px)").addListener(
+        e=>{
+          if (e.matches) { 
+            setIsSmall(true)
+          } else {
+            setIsSmall(false)
+          }
+        }
+      )
+    });
   
   const getSkills = () => {
     return (
@@ -142,7 +142,7 @@ function Web(props) {
           {
             skill.skillList.map(a =>{
               return (
-                <Grid container justify="center" alignItems="flex-start" style={{padding:"30px",height:"250px", margin: a.id === 1 ? "0 5px 0 0" : "0 0 0 5px", width:"calc(50% - 5px)", float:"left", background:a.bgColor, borderRadius:"5px"}}>
+                <Grid key={a.id} container justify="center" alignItems="flex-start" style={{padding:"30px",height:"250px", margin: a.id === 1 ? "0 5px 0 0" : "0 0 0 5px", width:"calc(50% - 5px)", float:"left", background:a.bgColor, borderRadius:"5px"}}>
                   <Grid item xs={12}>
                     <div style={{background:a.iconColor, padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
                         {a.icon}
@@ -153,7 +153,7 @@ function Web(props) {
                       {
                         a.desc.map(b =>{
                           return (
-                            <span>
+                            <span key={b.id}>
                               <b>{b.title}</b>
                               <br/>
                               {b.desc}
@@ -226,7 +226,7 @@ function Web(props) {
   const getMenuList = () => {
     return menuList.map(a => {
       return (
-        <Button key={a.id} onClick={()=>{scroll(`#${a.id}`)}} className={classes.headerBtn} style={{marginRight: a.label === "contact" ? "0" : "10px"}}>
+        <Button key={a.id} onClick={()=>{scroll(`#${a.link}`)}} className={classes.headerBtn} style={{marginRight: a.label === "contact" ? "0" : "10px"}}>
           {a.label}
         </Button>
       )})
@@ -297,6 +297,7 @@ function Web(props) {
               isSmall ? 
               <Grid item xs={6}>
                 <MenuDrawer 
+                menu={menuList}
                 scroll={scroll}
                 classes={classes}/> 
               </Grid>
@@ -349,7 +350,7 @@ function Web(props) {
       <Grid id="work" container style={{margin:"auto", maxWidth:"500px", padding:"20px"}} justify="center" alignItems="center">
         <Grid item xs={12} style={{marginBottom:"10px"}}>
           <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
-            recent projects
+            Recent Projects
           </Typography>
         </Grid>
          {/* List of Works */}
@@ -362,7 +363,7 @@ function Web(props) {
       <div id="contact"className={classes.footer}>
         <div className={classes.footerContent}>
           <Typography className={classes.fontBodyHeader} style={{textAlign:"center"}}>
-            contact me
+            Contact Me
           </Typography>
           <Typography className={classes.fontBody} style={{color:"#9D9D9D", textAlign:"center"}}>
             If you want to get in touch, talk to me about a project collaboration or just say hi,
