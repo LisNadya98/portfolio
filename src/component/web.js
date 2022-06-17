@@ -407,8 +407,8 @@ function Web(props) {
       <Grid id="about"  container justify="center" alignItems={"center"} style={{width:"100%", height:"100vh", position:"relative", background:"#0F143E"}}>
         <Grid container style={{maxWidth:"800px", padding:"20px"}}>
           <Grid item xs={isSmall ? 12 : 8}>
-            <Typography className={`${classes.fontBodyHeader} typing`} style={{textAlign:"left", width:"fit-content"}}>
-              Hi,<br/>I’m <span className={classes.highlight}>Lis Nadya</span>
+            <Typography className={`${classes.fontBodyHeader}`} style={{textAlign:"left", width:"fit-content"}}>
+              Hi,<br/>I’m <span className={`${classes.highlight} typing`}>Lis Nadya</span>
             </Typography>
             <Typography className={`${classes.fontBody}`} style={{textAlign:"left"}}>
               <br/>
