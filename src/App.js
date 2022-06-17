@@ -34,13 +34,13 @@ function App(props) {
         <Suspense fallback={
           <div className="loadingScreen">
             <div className="wrapper">
-              <div className="circle" style={{background:"#F7D9DB"}}></div>
-              <div className="circle" style={{background:"#EA7779"}}></div>
-              <div className="circle" style={{background:"#C0CBE9"}}></div>
+              <div className="circle" style={{background:"#6948E0"}}></div>
+              <div className="circle" style={{background:"#FF83D5"}}></div>
+              <div className="circle" style={{background:"#FF7EAD"}}></div>
               <div className="shadow"></div>
               <div className="shadow"></div>
               <div className="shadow"></div>
-              <span>loading</span>
+              <span style={{color:"#fff"}}>loading</span>
             </div>
           </div>}
         >

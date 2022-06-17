@@ -1,26 +1,26 @@
 import { makeStyles } from '@material-ui/core/styles';
 const fontFamily = "Nunito Sans, sans-serif";
-const fontSmall = "0.8rem";
-const fontBody = "12px";
-const fontH4 = "1.1rem";
-const fontH3 = "14px";
-const fontH2 = "2rem";
-const fontH1 = "1.75rem";
+const fontBody = "16px";
+const fontSmall = "12px";
+const fontH4 = "18px";
+const fontH3 = "20px";
+const fontH2 = "24px";
 const black = "#3E3E3E";
-const darkBg = "#E8DDD6";
-const brightBg = "#F5F5F3";
-const green = "#7CBBB0";
-const red ="#E86C45";
+const darkPurple = "#0F143E";
+const darkerPurple = "#070B30";
+const grey = "#9D9D9D";
+const grey2 = "#EAEAEA";
 const white = "#FFF";
 const greyBg = "#C2C2C2";
-const pink = "#DAA2AC";
-const blue = "#99A5D8";
-const darkBlue = "#667BC0";
+const pink = "#FF7EAD";
+const purple = "#E071FF";
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        background: darkerPurple
     },
 
+    
     menuButton: {
         marginRight: theme.spacing(2),
     },
@@ -29,12 +29,20 @@ const useStyles = makeStyles((theme) => ({
         color: greyBg,
     },
 
+    highlight: {
+        color:"#FF83D5"
+    },
+
+    numberHighlight: {
+        color: purple
+    },
+
     topBar:{
-        background: white,
-        boxShadow:`0 0 2px rgba(0, 0, 0, 0.5)`,
-        padding:"0.2rem 0",
+        background: darkPurple,
+        boxShadow:`0 0 0 transparent`,
         position:"sticky",
         width:"100%",
+        height:"50px",
         zIndex:"10"
     },
 
@@ -56,13 +64,13 @@ const useStyles = makeStyles((theme) => ({
     fontBody:{
         fontFamily: fontFamily,
         fontSize:fontBody,
-        color:black,
+        color:white,
     },
 
     fontBodyH2:{
         fontFamily: fontFamily,
         fontSize:fontH2,
-        color:black,
+        color:white,
         fontWeight:"bold",
         textAlign:"center", 
     },
@@ -70,18 +78,16 @@ const useStyles = makeStyles((theme) => ({
     fontBodyH3:{
         fontFamily: fontFamily,
         fontSize:fontH3,
-        margin:"10px 0",
-        color:pink,
-        fontWeight:"bold",
-        borderBottom:"0.5px solid #C2C2C2"
+        margin:"10px 0 0 0",
+        color: white,
+        fontWeight:"bold"
     },
 
     fontBodyH4:{
         fontFamily: fontFamily,
         fontSize:fontH4,
-        marginBottom:fontBody,
-        color:black,
-        fontWeight:"600",
+        color:pink,
+        fontStyle:"italic"
     },
 
     // fontModalFooter:{
@@ -95,30 +101,32 @@ const useStyles = makeStyles((theme) => ({
     fontBodyHeader:{
         fontFamily: fontFamily,
         fontWeight:"bold", 
-        fontSize:"16px",
-        color:black,
+        lineHeight:"80%",
+        fontSize:"60px",
+        color:white,
+    },
+
+    listText: {
+        color: white,
+    },
+
+    header: {
+        marginBottom:"20px"
     },
 
     fontSmall: {
         fontFamily: fontFamily,
-        fontStyle:"italic",
         fontSize: fontBody,
-        color:blue,
+        color:grey,
         marginTop:"10px",
         marginBottom:"0",
-        cursor: "pointer",
-        transition:"0.5s",
-        '&:hover':{
-            color:"darkBlue", 
-        }
+        transition:"0.5s"
     },
 
     postTime: {
         fontFamily: fontFamily,
-        fontSize:"10px",
-        color:"#9D9D9D",
-        textAlign:"center",
-        padding:"10px"
+        fontSize:fontSmall,
+        color: grey2,
     },
 
     postTitle: {
@@ -153,13 +161,43 @@ const useStyles = makeStyles((theme) => ({
     //     borderLeft: "100vW solid transparent",
     // },
 
+    tabsList: {
+        color:"white", 
+        fontSize:"12px", 
+        minWidth: "50px", 
+        minHeight:"0", 
+        marginBottom:"10px", 
+        marginRight:"20px"
+    },
+
     skills:{
-        margin:"auto", 
-        maxWidth:"460px",
-        padding:"20px",
-        position:"relative"
+        width:"100%",
+        padding:"50px 0",
+        position:"relative",
+        display:"block",
+        background:darkerPurple
+    },
+
+    skillList: {
+        position: "relative",
+        padding:"30px 30px 25px 30px", 
+        borderRadius:"5px",
+        background:darkPurple,
+        transition: "1s", 
+        zIndex: "1",
+        '&:hover':{
+            zIndex: "3",
+            transform: "scale(1.1)"
+        }
     },
     
+    skillListIconBg: {
+        background: "linear-gradient(to bottom right, #5A4BE5, #DD34BD)",
+        padding:"10px 10px 6px 10px", 
+        width:"fit-content", 
+        borderRadius:"10px", 
+        margin:"0 auto 20px 0"
+    },
     // line:{
     //     margin:"2rem auto", 
     //     width:"4rem", 
@@ -170,7 +208,13 @@ const useStyles = makeStyles((theme) => ({
 
     icon:{
         fontSize:"30px", 
-        color:white
+        color: "#7446DC"
+    },
+
+    smallIcon:{
+        margin: "0 10px -2px 0",
+        fontSize: fontBody,
+        color: grey
     },
 
     // h4:{
@@ -179,12 +223,9 @@ const useStyles = makeStyles((theme) => ({
 
     work:{
         position:"relative",
-        width:"calc(100% - 20px)",
-        padding:"0.5rem",
         overflow:"hidden",
-        background:white,
+        background:darkPurple,
         borderRadius:"5px",
-        border:"0.5px solid #C2C2C2",
         transition:"0.5s",
         // '&:hover':{
         //     boxShadow:"0 0 4px #c4c4c4",
@@ -253,10 +294,8 @@ const useStyles = makeStyles((theme) => ({
         borderRadius:"5px", 
         padding:"5px 10px", 
         fontSize: fontBody, 
-        background:"#BFC1C7",
-        color:"#fff", 
+        color: white, 
         float:"right",
-        textTransform:"none",
         letterSpacing: "0",
         transition:"0.5s",
         '&:hover':{
@@ -266,17 +305,24 @@ const useStyles = makeStyles((theme) => ({
     },
 
     footerBtn:{
-        border:"0.5px solid #9D9D9D", 
-        borderRadius:"10px", 
-        padding:"5px 10px", 
+        borderRadius:"20px", 
+        padding:"10px 20px", 
         fontSize: fontBody, 
-        color:"#9D9D9D",
+        color:white,
+        width: "100%",
+        marginBottom: "10px",
+        background: "linear-gradient(to bottom right, #22226C, #472361)",
         textTransform:"none",
         letterSpacing: "0",
         transition:"0.5s",
         '&:hover':{
             letterSpacing: "2px"
         }
+    },
+
+    footerDesc: {
+        paddingRight: "20px",
+        borderRight: "2px solid #22226C"
     }
 }));
 

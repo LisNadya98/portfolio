@@ -1,31 +1,90 @@
 import '../App.css';
 import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import MenuDrawer from './menu';
 import {Button, 
   Toolbar,
   AppBar, 
   Grid,
   Typography,
+  Tabs, 
+  Tab,
+  Box 
 } from '@material-ui/core';
-import {Brush, Code, LinkedIn, MailOutline, CloseRounded} from '@material-ui/icons';
+import {Brush, Code, LinkedIn, MailOutline, Chat, Computer} from '@material-ui/icons';
 import '../asset/styles.css';
 
-import cat from "../element/cat.jpg";
-import header from "../element/header.png";
 import j1 from "../element/j1.png";
 import p1 from "../element/p1.png";
 import trs1 from "../element/trs1.png";
+
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 0;
+
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+  }
+}
+
+window.addEventListener("scroll", reveal);
+function TabPanel(props) {
+  const { children, value, index, isSmall, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <div style={{marginTop: "-5px", marginLeft:isSmall ? "0" : "20px"}}>
+          <Typography>{children}</Typography>
+        </div>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  isSmall: Boolean,
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 function Web(props) {
   const {classes, scroll} = props
   const [isSmall, setIsSmall] = useState( window.matchMedia("(max-width: 790px)").matches );
   const [open, setOpen] = React.useState(false);
-
+  const [value, setValue] = React.useState(0);
+  const [menuValue, setMenuValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const handleMenuChange = (event, newValue) => {
+    setMenuValue(newValue);
+  };
   const [workList, setworkList] = useState([
     {
       id: 1, 
       date: "Apr 2021",
       title: "PixiPixi",
+      tech: "Typescript, React JS, Node JS, MongoDB",
       img: (<img className={classes.img} src={p1} alt="PixiPixi"/>),
       desc: "A proof of concept marketplace using NFT (Non-fungible Token) and Blockchain technology.",
       moreDesc: (<ul>
@@ -39,6 +98,7 @@ function Web(props) {
       id: 2, 
       date: "Apr 2021",
       title: "Jamit!",
+      tech: "Javascript, React JS, Node JS, MongoDB",
       img: (<img className={classes.img} src={j1} alt="Jamit"/>),
       desc: "A card-based web platform for the creative industry for education and entertainment purposes.",
       moreDesc: (<ul>
@@ -53,6 +113,7 @@ function Web(props) {
       id: 3, 
       date: "Jul 2019",
       title: "Traffic Reporting System",
+      tech: "WAMP, Javascript, JQuery, HTML5/CSS",
       img: (<img className={classes.img} src={trs1} alt="Traffic Reporting System"/>),
       desc: "A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia.",
       moreDesc: (<ul>
@@ -62,6 +123,51 @@ function Web(props) {
       showMore: false
     }
   ])
+
+  const expList = [
+    {
+      id: 0,
+      company: "Avanade",
+      role: "Analyst, Front End Developer", 
+      period: "May 2021 - Ongoing",
+      desc: (
+        <ul>
+          <li>Involved in Accenture NewsPage distribution management system that serves over 3 large clients</li>
+          <li>Maintained and enhanced more than 20 modules on the front end application using Angular framework</li>
+          <li>Developed more than 5 modules based on the requirements given by the clients</li>
+          <li>Responsible in debugging more than 50 issues raised by QA testers and UAT</li>
+        </ul>
+      )
+    },
+    {
+      id: 1,
+      company: "SEAM LLC",
+      role: "Front End / UX Developer", 
+      period: "March 2020 - April 2021",
+      desc: (
+        <ul>
+          <li>Involved with an in-house software development by designing more than 30 user interfaces with UX input using
+          Figma based on stakeholder's requirements and implemented them using React JS framework
+          </li>
+          <li>Write down more than 30 functional test cases for development and design to refer to using Excel</li>
+        </ul>
+      )
+    },
+    {
+      id: 2,
+      company: "Juris Technologies",
+      role: "Intern, Software Engineer", 
+      period: "April 2019 - June 2019",
+      desc: (
+        <ul>
+          <li>Involved in a project team that serves one of the largest banking groups in Malaysia</li>
+          <li>Maintained 2 technical documents for the team to refer to</li>
+          <li>Performed troubleshooting and maintainence using PHP and DB2 SQL for an in-house fintech software project</li>
+          <li>Managed the product’s version control in Mercurial</li>
+        </ul>
+      )
+    }
+  ]
   
   const handleOpen = () => {
     setOpen(true);
@@ -77,13 +183,11 @@ function Web(props) {
       {
         id: 1, 
         icon: (<Brush className={classes.icon}/>),
-        iconColor: "#99A5D8",
-        bgColor: "#B8C5EF",
         desc: [
         {
           id: 1, 
           title: "I enjoy designing",
-          desc: "UX, UI, Web, Mobile" },
+          desc: "UI/UX, Web, Mobile" },
         {
           id: 2, 
           title: "Design tools I use",
@@ -93,18 +197,26 @@ function Web(props) {
       {
         id: 2, 
         icon: (<Code className={classes.icon}/>),
-        iconColor: "#DAA2AC",
-        bgColor: "#FFE8EC",
         desc: [
         {
           id: 1, 
           title: "Languages I speak",
-          desc: "HTML5, CSS, Javascript /Typescript, Python, PHP, SQL",
+          desc: "Javascript/Typescript, HTML5/CSS, Python, PHP, SQL",
         },
         {
           id: 2, 
           title: "Frameworks I use",
           desc: "Angular, React JS, Bootstrap, JQuery"
+        }]
+      },
+      {
+        id: 3, 
+        icon: (<Chat className={classes.icon}/>),
+        desc: [
+        {
+          id: 1, 
+          title: "I am fluent in",
+          desc: "English, Malay",
         }]
       }
     ]
@@ -115,12 +227,15 @@ function Web(props) {
     {id: 2, label: "LinkedIn", link: "https://www.linkedin.com/in/lisnadya/", icon:(<LinkedIn />)}];
 
   const menuList = [
-    {id: 1, label: "Contact", link: "contact"}, 
-    {id: 2, label: "Recent projects", link: "work"}, 
-    {id: 3, label: "Skills", link: "skills"}];
+    {id: 0, label: "About", link: "about"},
+    {id: 1, label: "Skills", link: "skills"},
+    {id: 2, label: "Work Experience", link: "experience"},
+    {id: 3, label: "Recent projects", link: "projects"},
+    {id: 4, label: "Contact", link: "contact"}
+    ];
 
     useEffect(() => {
-      window.matchMedia("(max-width: 790px)").addListener(
+      window.matchMedia("(max-width: 500px)").addListener(
         e=>{
           if (e.matches) { 
             setIsSmall(true)
@@ -133,59 +248,59 @@ function Web(props) {
   
   const getSkills = () => {
     return (
-        <>
-          <Grid container style={{marginBottom:"10px"}}>
-            <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
-              {skill.title}
+        <Grid container spacing={2} style={{margin:"auto", maxWidth:"800px"}}>
+          <Grid container className={`${classes.header} reveal`}>
+            <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
+            <span className={classes.numberHighlight}>01.</span> {skill.title}
             </Typography>
           </Grid>
           {
             skill.skillList.map(a =>{
               return (
-                <Grid key={a.id} container justify="center" alignItems="flex-start" style={{padding:"30px",height:"250px", margin: a.id === 1 ? "0 5px 0 0" : "0 0 0 5px", width:"calc(50% - 5px)", float:"left", background:a.bgColor, borderRadius:"5px"}}>
-                  <Grid item xs={12}>
-                    <div style={{background:a.iconColor, padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
-                        {a.icon}
-                    </div>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Typography className={classes.fontBody} style={{textAlign:"center"}}>
-                      {
-                        a.desc.map(b =>{
-                          return (
-                            <span key={b.id}>
-                              <b>{b.title}</b>
-                              <br/>
-                              {b.desc}
-                              <br/>
-                            </span>
-                          )
-                        })
-                      }
-                    </Typography>
+                <Grid item xs={4} key={a.id} className={`reveal`}>
+                  <Grid container  className={classes.skillList}>
+                    <Grid item xs={12} style={{marginBottom: "10px"}} >
+                      {a.icon}
+                    </Grid>
+                    <Grid item xs={12} style={{height: "200px"}}>
+                      <Typography className={classes.fontBody} style={{textAlign:"left"}}>
+                        {
+                          a.desc.map(b =>{
+                            return (
+                              <span key={b.id}>
+                                <b>{b.title}</b>
+                                <br/>
+                                {b.desc}
+                                <br/><br/>
+                              </span>
+                            )
+                          })
+                        }
+                      </Typography>
+                    </Grid>
                   </Grid>
                 </Grid>
               )
             })
           }
-      </>
+      </Grid>
     )
   }
 
   const getSmallSkills = () => {
     return (
         <>
-          <Grid item xs={12} style={{marginBottom:"10px"}}>
-            <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
-            {skill.title}
+          <Grid container className={classes.header}>
+            <Typography className={`${classes.fontBodyH2} reveal`} style={{textAlign:"left"}}>
+            <span className={classes.numberHighlight}>01.</span> {skill.title}
             </Typography>
           </Grid>
           {
             skill.skillList.map(a =>{
               return (
-                <Grid container justify="flex-start" alignItems="center" style={{padding:"10px",marginBottom:"10px",background:a.bgColor, borderRadius:"5px"}}>
+                <Grid container justify="flex-start" alignItems="center" className={`${classes.skillList} reveal`} style={{padding:"10px",marginBottom:"10px", borderRadius:"5px"}}>
                   <div style={{width:"80px"}}>
-                    <div style={{background: a.iconColor, padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
+                    <div style={{padding:"10px 10px 6px 10px", width:"fit-content", borderRadius:"10px", margin:"auto"}}>
                         {a.icon}
                     </div>
                   </div>
@@ -214,80 +329,60 @@ function Web(props) {
   }
 
   const getFooterMenuList = () => {
-    return footerList.map(a =>{
-      return (
-        <Button key={a.id} onClick={()=>{window.open(a.link, '_blank')}} startIcon={a.icon} className={classes.footerBtn} style={{marginRight: a.label === "linkedin" ? "0" : "10px"}}>
-          {a.label}
-        </Button>
-      )
-    })
+    return <Grid container spacing={isSmall ? 2 : 0} style={{margin: isSmall ? "10px 0 0 0" : "0 0 0 10px"}} justify="flex-end">
+      {footerList.map(a =>{
+        return (
+          <Grid item xs={isSmall ? 6 : 12} key={a.id}>
+            <Button onClick={()=>{window.open(a.link, '_blank')}} startIcon={a.icon} className={classes.footerBtn} style={{marginRight: isSmall && a.label !== "linkedin" ? "10px" : "0"}}>
+              {a.label}
+            </Button>
+          </Grid>
+        )
+      })}
+    </Grid>
+   
   }
 
   const getMenuList = () => {
-    return menuList.map(a => {
-      return (
-        <Button key={a.id} onClick={()=>{scroll(`#${a.link}`)}} className={classes.headerBtn} style={{marginRight: a.label === "contact" ? "0" : "10px"}}>
-          {a.label}
-        </Button>
-      )})
+    return <Tabs value={menuValue} style={{float:"right"}} TabIndicatorProps={{style: {background:'linear-gradient(to bottom right, #5A4BE5, #DD34BD)'}}} indicatorColor="primary" onChange={handleMenuChange}>
+    {
+      menuList.map(a => {return (<Tab style={{color:"white", fontSize:"12px", minWidth: "50px", marginRight:"20px"}} key={a.id} onClick={()=>{scroll(`#${a.link}`)}} label={a.label} {...a11yProps(a.id)} />)})
+    }
+  </Tabs>
   }
 
   const getWorkPost = () => {
     return workList.map(a => {
       return (
-      <Grid key={a.id} item xs={12} style={{marginBottom:"1rem"}}>
+      <Grid key={a.id} className={`reveal`}  item xs={12} style={{marginBottom:"1rem"}}>
         <div className={classes.work}>
-          <Grid container justify="center" alignItems="center" style={{background:"#FAFAFA", border:"0.5px solid #BBBBBB", borderRadius:"5px", marginBottom:"10px"}}>
-            <Grid item xs={3} style={{borderRight:"0.5px solid #BBBBBB"}}>
-              <Typography className={classes.postTime}>
-                {a.date}
-              </Typography>
-            </Grid>
-            <Grid item xs={9}>
-              <Typography className={classes.postTitle}>
+          <div style={{margin:"20px"}}>
+            {a.img}
+            <div className={classes.workContent} style={{height:"auto"}}>
+              <Typography className="postHeader">
                 {a.title}
               </Typography>
-            </Grid>
-          </Grid>
-          {a.img}
-          <div className={classes.workContent} style={{height:"auto"}}>
-            <Typography className={classes.fontBodyH3}>
-              Description
-            </Typography>
-            <Typography className={classes.fontBody} >
-              {a.desc}
-            </Typography>
-            <div style={{display: a.showMore ? "block" : "none"}}>
-              <Typography className={classes.fontBodyH3}>
-                My Role
-              </Typography>
               <Typography className={classes.fontBody} >
-                {a.moreDesc}
+                {a.desc}
+              </Typography>
+              <Typography className={classes.fontSmall} style={{background:"#171C48", padding:"10px"}}>
+                <Computer className={classes.smallIcon}/>&nbsp;
+                {a.tech}
               </Typography>
             </div>
-            <Typography className={classes.fontSmall} onClick={()=> handleShowMore(a.id)}>
-              { a.showMore ? "Show less." : "Show more." }
-            </Typography>
           </div>
         </div>
       </Grid>
     )})
   }
 
-  const handleShowMore = (id) => {
-    const list = [...workList];
-    const item = list.find(a => a.id === id);    
-    item.showMore = item.showMore ? false : true;
-    setworkList(list);
-  }
-
   return (
     <div className={classes.root}>
-      <AppBar id="about" position="sticky" className={classes.topBar}>
+      <AppBar position="sticky" className={classes.topBar}>
         <Toolbar variant="dense">
-          <Grid container justify="center" alignItems="flex-start">
+          <Grid container justify="center" alignItems="center">
             <Grid item xs={6}>
-              <div style={{float:"left", background: "linear-gradient(to bottom right, #99A5D8, #FFE8EC)", height:"28px", width:"28px", margin: isSmall ? "5px" : "0"}}>
+              <div style={{float:"left", background: "linear-gradient(to bottom right, #5A4BE5, #DD34BD)", height:"28px", width:"28px"}}>
                 <Typography className={classes.fontTopPanel} style={{lineHeight:"28px", textAlign:"center"}}>
                   LN
                 </Typography>
@@ -309,73 +404,107 @@ function Web(props) {
           </Grid>
         </Toolbar>
       </AppBar>
-      <Grid container justify="center" alignItems={"flex-start"} style={{margin:"auto", position:"relative", zIndex:"2"}}>
-        <Grid container alignItems={"center"} style={{position:"relative", height:"100px"}}>
-          <img style={{width:"100%", height:"100px", position:"absolute", zIndex:"1"}} src={header} alt="cat"/>
-          <Typography className={classes.fontBodyHeader} style={{width: "100%", textAlign:"center", zIndex:"2"}}>
-            <span style={{background:"#EA7779", color:"white", padding:"0 10px"}}>
-              Hi, I am Lis Nadya.
-            </span>
-          </Typography>
-        </Grid>
-        <Grid container justify="center" alignItems={"flex-start"} style={{position:"relative", padding:"20px", background:"white", borderBottom:"0.5px solid #C2C2C2"}}>
-          <Grid container style={{margin:"auto", maxWidth:"460px", position:"relative"}}>
-            <Grid item xs={8}>
-              <Typography className={classes.fontBody} style={{textAlign:"left"}}>
-                A front-end developer with over 2 years of working experience, which includes developing and maintaining web applications.
-              </Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <div style={{padding:"5px", borderRadius: "100px", background:"white", position:"absolute", marginTop:"-60px", overflow:"hidden", right:"0", zIndex:"2"}}>
-                  <img style={{width:"80px", height:"80px", borderRadius: "100px"}} src={cat}/>
-              </div>
-            </Grid>
+      <Grid id="about"  container justify="center" alignItems={"center"} style={{width:"100%", height:"100vh", position:"relative", background:"#0F143E"}}>
+        <Grid container style={{maxWidth:"800px", padding:"20px"}}>
+          <Grid item xs={isSmall ? 12 : 8}>
+            <Typography className={`${classes.fontBodyHeader} typing`} style={{textAlign:"left", width:"fit-content"}}>
+              Hi,<br/>I’m <span className={classes.highlight}>Lis Nadya</span>
+            </Typography>
+            <Typography className={`${classes.fontBody}`} style={{textAlign:"left"}}>
+              <br/>
+              I’m a Front End Developer based in Malaysia with over 2 years of working experience, which includes developing and maintaining web applications
+            </Typography>
           </Grid>
+          <Grid item xs={4}></Grid> 
         </Grid>
       </Grid>
       
       {/* Skills */}
       {
         !isSmall ? 
-        <div id="skills" className={classes.skills} style={{height:"280px", position:"relative", display:"block", }}>
-        {getSkills()}
-        </div>
+        <Grid container justify="center" alignItems={"center"} id="skills" className={classes.skills}>
+          {getSkills()}
+        </Grid>
       :
-        <Grid id="skills" container className={classes.skills} style={{maxWidth:"500px"}} justify="center" alignItems="center">
+        <Grid id="skills" container className={classes.skills} style={{maxWidth:"800px", padding:"50px 20px"}} justify="center" alignItems="center">
           {getSmallSkills()}
         </Grid>
       }
 
-      {/* My Recent Work */}
-      <Grid id="work" container style={{margin:"auto", maxWidth:"500px", padding:"20px"}} justify="center" alignItems="center">
-        <Grid item xs={12} style={{marginBottom:"10px"}}>
-          <Typography className={classes.fontBodyHeader} style={{textAlign:"left"}}>
-            Recent Projects
-          </Typography>
+      <Grid id="experience"  container style={{width:"100%", background:"#0F143E"}}>
+        <Grid container style={{margin:"auto", maxWidth:"800px", padding:"50px 20px"}} justify="center" alignItems="flex-start">
+          <Grid container className={classes.header}>
+            <Typography className={`${classes.fontBodyH2} reveal`} style={{textAlign:"left"}}>
+            <span className={classes.numberHighlight}>02.</span> Work Experience
+            </Typography>
+          </Grid>
+          <Grid container className="reveal" >
+            <Grid item xs={isSmall ? 12 : 3}>
+              <Tabs orientation={isSmall ? "horizontal" : "vertical"} style={{height: isSmall ? "0" : "224px"}} variant="scrollable" value={value} TabIndicatorProps={{style: {background:'linear-gradient(to bottom right, #5A4BE5, #DD34BD)'}}} onChange={handleChange}>
+                {
+                  expList.map(a => {return (<Tab style={{color:"white", fontSize:"12px", minWidth: "50px", minHeight:"0", marginBottom:"10px", marginRight:"20px"}} key={a.id} label={isSmall ? `0${a.id}.`: a.company} {...a11yProps(a.id)} />)})
+                }
+              </Tabs>
+            </Grid>
+            <Grid item xs={isSmall ? 12 : 9}>
+            {
+              expList.map(a => {return (
+                <TabPanel key={a.id} isSmall={isSmall} value={value} index={a.id}>
+                  <Typography className={classes.fontBodyH3} style={{textAlign:"left"}}>
+                    {a.role} 
+                  </Typography>
+                  <Typography className={classes.fontBodyH4} style={{textAlign:"left"}}>
+                    {a.company} 
+                  </Typography>
+                  <Typography className={classes.postTime} style={{textAlign:"left"}}>
+                    {a.period}
+                  </Typography>
+                  <Typography className={classes.fontBody} style={{textAlign:"left"}}>
+                    {a.desc}
+                  </Typography>
+                </TabPanel>
+              )})
+            } 
+            </Grid>
+          
+          </Grid>
         </Grid>
-         {/* List of Works */}
-        <Grid container justify="center" alignItems="center">
-         {getWorkPost()}
+      </Grid>
+      <Grid id="projects"  container style={{width:"100%"}}>
+        <Grid container style={{margin:"auto", maxWidth:"800px", padding:"50px 20px"}} justify="center" alignItems="center">
+          <Grid container className={`${classes.header} reveal`}>
+            <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
+            <span className={classes.numberHighlight}>03.</span> Recent Projects
+            </Typography>
+          </Grid>
+          {/* List of Works */}
+          <Grid container justify="center" alignItems="center">
+          {getWorkPost()}
+          </Grid>
         </Grid>
       </Grid>
 
       {/* Contact */}
-      <div id="contact"className={classes.footer}>
-        <div className={classes.footerContent}>
-          <Typography className={classes.fontBodyHeader} style={{textAlign:"center"}}>
-            Contact Me
-          </Typography>
-          <Typography className={classes.fontBody} style={{color:"#9D9D9D", textAlign:"center"}}>
-            If you want to get in touch, talk to me about a project collaboration or just say hi,
-            do send me an email or a message via
-          </Typography>
-          <Grid container justify="center" alignItems="center" style={{marginTop:"1rem"}}>
-            <Grid item>
+      <Grid id="contact" container style={{width: "100%", padding:"50px 20px", background: "#0F143E"}} alignItems="center">
+        <Grid container style={{maxWidth: "800px", margin: "auto"}}>
+          <Grid container className={classes.header}>
+            <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
+            <span className={classes.numberHighlight}>04.</span> Contact
+            </Typography>
+          </Grid>
+          <Grid container>
+            <Grid item xs={!isSmall ? 9 : 12} className={!isSmall && classes.footerDesc}>
+              <Typography className={classes.fontBody} style={{textAlign:"left"}}>
+                If you want to get in touch, talk to me about a project collaboration or just say hi,
+                do send me an email or a message via
+              </Typography>
+            </Grid>
+            <Grid item xs={!isSmall ? 3 : 12}>
               {getFooterMenuList()}
             </Grid>
           </Grid>
-        </div>
-      </div>
+        </Grid>
+        </Grid>
     </div>
   );
 }
