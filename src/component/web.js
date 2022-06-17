@@ -70,7 +70,6 @@ function a11yProps(index) {
 function Web(props) {
   const {classes, scroll} = props
   const [isSmall, setIsSmall] = useState( window.matchMedia("(max-width: 790px)").matches );
-  const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(0);
   const [menuValue, setMenuValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -149,7 +148,7 @@ function Web(props) {
           <li>Involved with an in-house software development by designing more than 30 user interfaces with UX input using
           Figma based on stakeholder's requirements and implemented them using React JS framework
           </li>
-          <li>Write down more than 30 functional test cases for development and design to refer to using Excel</li>
+          <li>Wrote down more than 30 functional test cases for development and design to refer to using Excel</li>
         </ul>
       )
     },
@@ -168,15 +167,7 @@ function Web(props) {
       )
     }
   ]
-  
-  const handleOpen = () => {
-    setOpen(true);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-  
   const skill = {
     title: "Skills",
     skillList: [
