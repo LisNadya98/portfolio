@@ -239,7 +239,7 @@ function Web(props) {
   
   const getSkills = () => {
     return (
-        <Grid container spacing={2} style={{margin:"auto", maxWidth:"800px"}}>
+        <Grid container spacing={2} style={{margin:"auto", maxWidth:"800px", padding:"0 20px"}}>
           <Grid container className={`${classes.header} reveal`}>
             <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
             <span className={classes.numberHighlight}>01.</span> {skill.title}
@@ -320,7 +320,7 @@ function Web(props) {
   }
 
   const getFooterMenuList = () => {
-    return <Grid container spacing={isSmall ? 2 : 0} style={{margin: isSmall ? "10px 0 0 0" : "0 0 0 10px"}} justify="flex-end">
+    return <Grid container spacing={isSmall ? 1 : 0} style={{margin: isSmall ? "10px 0 0 0" : "0 0 0 10px"}} justify="flex-end">
       {footerList.map(a =>{
         return (
           <Grid item xs={isSmall ? 6 : 12} key={a.id}>
@@ -476,8 +476,8 @@ function Web(props) {
       </Grid>
 
       {/* Contact */}
-      <Grid id="contact" container style={{width: "100%", padding:"50px 20px", background: "#0F143E"}} alignItems="center">
-        <Grid container style={{maxWidth: "800px", margin: "auto"}}>
+      <Grid id="contact" container style={{width: "100%", padding:"50px 0", background: "#0F143E"}} alignItems="center">
+        <Grid container style={{maxWidth: "800px", margin: "auto", padding: "0 20px"}}>
           <Grid container className={classes.header}>
             <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
             <span className={classes.numberHighlight}>04.</span> Contact
@@ -490,7 +490,7 @@ function Web(props) {
                 do send me an email or a message via
               </Typography>
             </Grid>
-            <Grid item xs={!isSmall ? 3 : 12}>
+            <Grid item xs={!isSmall ? 3 : 12} style={{maxWidth:isSmall && "calc(100% - 10px)"}}>
               {getFooterMenuList()}
             </Grid>
           </Grid>
