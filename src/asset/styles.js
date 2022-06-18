@@ -179,6 +179,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     skillList: {
+        width:"calc(100% - 20px)",
         position: "relative",
         padding:"30px 30px 25px 30px", 
         borderRadius:"5px",

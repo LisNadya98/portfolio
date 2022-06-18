@@ -253,3 +253,15 @@
     transform: translateY(0);
     opacity: 1;
   }
+
+  .headerImg {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    width:100%;
+    margin:auto;
+    max-height: 100%;
+  }

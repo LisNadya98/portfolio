@@ -14,6 +14,7 @@ import {Button,
 import {Brush, Code, LinkedIn, MailOutline, Chat, Computer} from '@material-ui/icons';
 import '../asset/styles.css';
 
+import header from "../element/portfolio.png";
 import j1 from "../element/j1.png";
 import p1 from "../element/p1.png";
 import trs1 from "../element/trs1.png";
@@ -34,7 +35,7 @@ function reveal() {
 
 window.addEventListener("scroll", reveal);
 function TabPanel(props) {
-  const { children, value, index, isSmall, ...other } = props;
+  const { children, value, index, ...other } = props;
 
   return (
     <div
@@ -45,7 +46,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <div style={{marginTop: "-5px", marginLeft:isSmall ? "0" : "20px"}}>
+        <div style={{marginTop: "-5px"}}>
           <Typography>{children}</Typography>
         </div>
       )}
@@ -54,7 +55,6 @@ function TabPanel(props) {
 }
 
 TabPanel.propTypes = {
-  isSmall: Boolean,
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
@@ -72,13 +72,24 @@ function Web(props) {
   const [isSmall, setIsSmall] = useState( window.matchMedia("(max-width: 790px)").matches );
   const [value, setValue] = React.useState(0);
   const [menuValue, setMenuValue] = React.useState(0);
+
+  const menuList = [
+    {id: 0, label: "About", link: "about"},
+    {id: 1, label: "Skills", link: "skills"},
+    {id: 2, label: "Work Experience", link: "experience"},
+    {id: 3, label: "Recent projects", link: "projects"},
+    {id: 4, label: "Contact", link: "contact"}
+  ];
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   const handleMenuChange = (event, newValue) => {
     setMenuValue(newValue);
   };
-  const [workList, setworkList] = useState([
+  
+  const workList = [
     {
       id: 1, 
       date: "Apr 2021",
@@ -121,7 +132,7 @@ function Web(props) {
         </ul>),
       showMore: false
     }
-  ])
+  ];
 
   const expList = [
     {
@@ -217,14 +228,6 @@ function Web(props) {
     {id: 1, label: "Email", link: "mailto:lisnadyaz@gmail.com", icon:(<MailOutline />)}, 
     {id: 2, label: "LinkedIn", link: "https://www.linkedin.com/in/lisnadya/", icon:(<LinkedIn />)}];
 
-  const menuList = [
-    {id: 0, label: "About", link: "about"},
-    {id: 1, label: "Skills", link: "skills"},
-    {id: 2, label: "Work Experience", link: "experience"},
-    {id: 3, label: "Recent projects", link: "projects"},
-    {id: 4, label: "Contact", link: "contact"}
-    ];
-
     useEffect(() => {
       window.matchMedia("(max-width: 500px)").addListener(
         e=>{
@@ -239,7 +242,7 @@ function Web(props) {
   
   const getSkills = () => {
     return (
-        <Grid container spacing={2} style={{margin:"auto", maxWidth:"800px", padding:"0 20px"}}>
+        <Grid container style={{margin:"auto", maxWidth:"800px", padding:"0 20px"}}>
           <Grid container className={`${classes.header} reveal`}>
             <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
             <span className={classes.numberHighlight}>01.</span> {skill.title}
@@ -395,9 +398,9 @@ function Web(props) {
           </Grid>
         </Toolbar>
       </AppBar>
-      <Grid id="about"  container justify="center" alignItems={"center"} style={{width:"100%", height:"100vh", position:"relative", background:"#0F143E"}}>
-        <Grid container style={{maxWidth:"800px", padding:"20px"}}>
-          <Grid item xs={isSmall ? 12 : 8}>
+      <Grid id="about" justify="center" alignItems="center"   container style={{width:"100%", height:"100vh", position:"relative", background:"#0F143E"}}>
+        <Grid container justify="center" alignItems="center"  style={{maxWidth:"800px", padding:"20px"}}>
+          <Grid item xs={isSmall ? 12 : 6}>
             <Typography className={`${classes.fontBodyHeader}`} style={{textAlign:"left", width:"fit-content"}}>
               Hi,<br/>I’m <span className={`${classes.highlight} typing`}>Lis Nadya</span>
             </Typography>
@@ -406,7 +409,12 @@ function Web(props) {
               I’m a Front End Developer based in Malaysia with over 2 years of working experience, which includes developing and maintaining web applications
             </Typography>
           </Grid>
-          <Grid item xs={4}></Grid> 
+          {
+            !isSmall && 
+            <Grid item xs={6}>
+              <img className="headerImg" src={header} alt="Header"/>
+              </Grid> 
+          }
         </Grid>
       </Grid>
       
@@ -430,17 +438,17 @@ function Web(props) {
             </Typography>
           </Grid>
           <Grid container className="reveal" >
-            <Grid item xs={isSmall ? 12 : 3}>
-              <Tabs orientation={isSmall ? "horizontal" : "vertical"} style={{height: isSmall ? "0" : "224px"}} variant="scrollable" value={value} TabIndicatorProps={{style: {background:'linear-gradient(to bottom right, #5A4BE5, #DD34BD)'}}} onChange={handleChange}>
+            <Grid item xs={isSmall ? 12 : 4}>
+              <Tabs orientation={isSmall ? "horizontal" : "vertical"} style={{height: isSmall ? "0" : "224px", marginRight:isSmall ? "0" : "40px"}} variant="scrollable" value={value} TabIndicatorProps={{style: {background:'linear-gradient(to bottom right, #5A4BE5, #DD34BD)'}}} onChange={handleChange}>
                 {
                   expList.map(a => {return (<Tab style={{color:"white", fontSize:"12px", minWidth: "50px", minHeight:"0", marginBottom:"10px", marginRight:"20px"}} key={a.id} label={isSmall ? `0${a.id}.`: a.company} {...a11yProps(a.id)} />)})
                 }
               </Tabs>
             </Grid>
-            <Grid item xs={isSmall ? 12 : 9}>
+            <Grid item xs={isSmall ? 12 : 8}>
             {
               expList.map(a => {return (
-                <TabPanel key={a.id} isSmall={isSmall} value={value} index={a.id}>
+                <TabPanel key={a.id} value={value} index={a.id}>
                   <Typography className={classes.fontBodyH3} style={{textAlign:"left"}}>
                     {a.role} 
                   </Typography>
