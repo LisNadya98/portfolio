@@ -324,6 +324,13 @@ const useStyles = makeStyles((theme) => ({
     footerDesc: {
         paddingRight: "20px",
         borderRight: "2px solid #22226C"
+    },
+
+    menuButton: {
+        borderRadius: "0",
+        color: white,
+        fontSize: fontSmall,
+        margin: "0 10px"
     }
 }));
 

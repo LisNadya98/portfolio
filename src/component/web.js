@@ -338,11 +338,7 @@ function Web(props) {
   }
 
   const getMenuList = () => {
-    return <Tabs value={menuValue} style={{float:"right"}} TabIndicatorProps={{style: {background:'linear-gradient(to bottom right, #5A4BE5, #DD34BD)'}}} indicatorColor="primary" onChange={handleMenuChange}>
-    {
-      menuList.map(a => {return (<Tab style={{color:"white", fontSize:"12px", minWidth: "50px", marginRight:"20px"}} key={a.id} onClick={()=>{scroll(`#${a.link}`)}} label={a.label} {...a11yProps(a.id)} />)})
-    }
-  </Tabs>
+    return menuList.map(a => {return (<Button key={a.id} onClick={()=>{scroll(`#${a.link}`)}} className={`${classes.menuButton} border`}> {a.label} </Button>)})
   }
 
   const getWorkPost = () => {
@@ -391,7 +387,7 @@ function Web(props) {
                 classes={classes}/> 
               </Grid>
               :
-              <Grid item xs={6}>
+              <Grid container xs={6} justify="flex-end">
                 {getMenuList()}
               </Grid>
             }
@@ -441,7 +437,7 @@ function Web(props) {
             <Grid item xs={isSmall ? 12 : 4}>
               <Tabs orientation={isSmall ? "horizontal" : "vertical"} style={{height: isSmall ? "0" : "224px", marginRight:isSmall ? "0" : "40px"}} variant="scrollable" value={value} TabIndicatorProps={{style: {background:'linear-gradient(to bottom right, #5A4BE5, #DD34BD)'}}} onChange={handleChange}>
                 {
-                  expList.map(a => {return (<Tab style={{color:"white", fontSize:"12px", minWidth: "50px", minHeight:"0", marginBottom:"10px", marginRight:"20px"}} key={a.id} label={isSmall ? `0${a.id}.`: a.company} {...a11yProps(a.id)} />)})
+                  expList.map(a => {return (<Tab style={{color:"white", fontSize:"12px", minWidth: "50px", minHeight:"0", marginBottom:"10px", marginRight:"20px"}} key={a.id} label={isSmall ? `0${a.id + 1}.`: a.company } {...a11yProps(a.id)} />)})
                 }
               </Tabs>
             </Grid>

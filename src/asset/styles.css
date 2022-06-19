@@ -265,3 +265,21 @@
     margin:auto;
     max-height: 100%;
   }
+
+  .border {
+    text-align:center;
+    opacity:0.8;
+    padding-bottom:5px;
+    background: 
+        linear-gradient(to bottom right, #5A4BE5, #DD34BD)
+        left 
+        bottom
+        no-repeat; 
+    background-size:100% 0;
+    transition:0.5s;
+  }
+
+  .border:hover {
+    opacity:1;
+    background-size:100% 2px
+  }
