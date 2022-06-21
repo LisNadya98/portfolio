@@ -47,9 +47,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     link:{
-        marginLeft: theme.spacing(6),
         fontSize:fontBody,
-        color:black,
+        color:purple,
         transition:"0.5s",
         cursor:"pointer"
     },
@@ -314,10 +313,11 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "10px",
         background: "linear-gradient(to bottom right, #22226C, #472361)",
         textTransform:"none",
-        letterSpacing: "0",
+        opacity: "1",
         transition:"0.5s",
         '&:hover':{
-            letterSpacing: "2px"
+            opacity: "0.8",
+
         }
     },
 

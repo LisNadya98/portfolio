@@ -261,9 +261,8 @@
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-    width:100%;
+    width: 100%;
     margin:auto;
-    max-height: 100%;
   }
 
   .border {

@@ -9,7 +9,8 @@ import {Button,
   Typography,
   Tabs, 
   Tab,
-  Box 
+  Box, 
+  Link
 } from '@material-ui/core';
 import {Brush, Code, LinkedIn, MailOutline, Chat, Computer} from '@material-ui/icons';
 import '../asset/styles.css';
@@ -229,7 +230,7 @@ function Web(props) {
     {id: 2, label: "LinkedIn", link: "https://www.linkedin.com/in/lisnadya/", icon:(<LinkedIn />)}];
 
     useEffect(() => {
-      window.matchMedia("(max-width: 500px)").addListener(
+      window.matchMedia("(max-width: 800px)").addListener(
         e=>{
           if (e.matches) { 
             setIsSmall(true)
@@ -242,7 +243,7 @@ function Web(props) {
   
   const getSkills = () => {
     return (
-        <Grid container style={{margin:"auto", maxWidth:"800px", padding:"0 20px"}}>
+        <Grid container style={{margin:"auto", maxWidth:"1200px", padding:"0 20px"}}>
           <Grid container className={`${classes.header} reveal`}>
             <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
             <span className={classes.numberHighlight}>01.</span> {skill.title}
@@ -334,7 +335,6 @@ function Web(props) {
         )
       })}
     </Grid>
-   
   }
 
   const getMenuList = () => {
@@ -366,12 +366,20 @@ function Web(props) {
     )})
   }
 
+  const downloadResume = () => {
+    const filePath = `${process.env.PUBLIC_URL}/resume.pdf`;
+    var link = document.createElement('a');
+    link.href = filePath;
+    link.download = filePath.substr(filePath.lastIndexOf('/') + 1);
+    link.click();
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="sticky" className={classes.topBar}>
         <Toolbar variant="dense">
           <Grid container justify="center" alignItems="center">
-            <Grid item xs={6}>
+            <Grid item xs={3}>
               <div style={{float:"left", background: "linear-gradient(to bottom right, #5A4BE5, #DD34BD)", height:"28px", width:"28px"}}>
                 <Typography className={classes.fontTopPanel} style={{lineHeight:"28px", textAlign:"center"}}>
                   LN
@@ -380,30 +388,34 @@ function Web(props) {
             </Grid>
             {
               isSmall ? 
-              <Grid item xs={6}>
+              <Grid item xs={9}>
                 <MenuDrawer 
                 menu={menuList}
                 scroll={scroll}
                 classes={classes}/> 
               </Grid>
               :
-              <Grid container xs={6} justify="flex-end">
+              <Grid container xs={9} justify="flex-end">
                 {getMenuList()}
               </Grid>
             }
           </Grid>
         </Toolbar>
       </AppBar>
-      <Grid id="about" justify="center" alignItems="center"   container style={{width:"100%", height:"100vh", position:"relative", background:"#0F143E"}}>
-        <Grid container justify="center" alignItems="center"  style={{maxWidth:"800px", padding:"20px"}}>
+      <Grid id="about" justify="center" alignItems="center"   container style={{width:"100%", minHeight:"100vh", position:"relative", background:"#0F143E"}}>
+        <Grid container justify="center" alignItems="center"  style={{maxWidth:"1200px", padding:"20px"}}>
           <Grid item xs={isSmall ? 12 : 6}>
             <Typography className={`${classes.fontBodyHeader}`} style={{textAlign:"left", width:"fit-content"}}>
               Hi,<br/>I’m <span className={`${classes.highlight} typing`}>Lis Nadya</span>
             </Typography>
             <Typography className={`${classes.fontBody}`} style={{textAlign:"left"}}>
               <br/>
-              I’m a Front End Developer based in Malaysia with over 2 years of working experience, which includes developing and maintaining web applications
+              A Frontend developer with over 2 years of experience in creating, optimizing and maintaining software applications during its product's lifecycle in an agile environment. 
+              I also love playing games and <Link className={classes.link} onClick={()=>{window.open("https://www.instagram.com/echoarte/", '_blank')}}>draw</Link> during my free time!
             </Typography>
+            <Button onClick={()=>{downloadResume()}} className={classes.footerBtn} style={{width:"fit-content", marginTop:"10px"}}>
+              Download My Resume
+            </Button>
           </Grid>
           {
             !isSmall && 
@@ -421,13 +433,13 @@ function Web(props) {
           {getSkills()}
         </Grid>
       :
-        <Grid id="skills" container className={classes.skills} style={{maxWidth:"800px", padding:"50px 20px"}} justify="center" alignItems="center">
+        <Grid id="skills" container className={classes.skills} style={{maxWidth:"1200px", padding:"50px 20px"}} justify="center" alignItems="center">
           {getSmallSkills()}
         </Grid>
       }
 
       <Grid id="experience"  container style={{width:"100%", background:"#0F143E"}}>
-        <Grid container style={{margin:"auto", maxWidth:"800px", padding:"50px 20px"}} justify="center" alignItems="flex-start">
+        <Grid container style={{margin:"auto", maxWidth:"1200px", padding:"50px 20px"}} justify="center" alignItems="flex-start">
           <Grid container className={classes.header}>
             <Typography className={`${classes.fontBodyH2} reveal`} style={{textAlign:"left"}}>
             <span className={classes.numberHighlight}>02.</span> Work Experience
@@ -466,7 +478,7 @@ function Web(props) {
         </Grid>
       </Grid>
       <Grid id="projects"  container style={{width:"100%"}}>
-        <Grid container style={{margin:"auto", maxWidth:"800px", padding:"50px 20px"}} justify="center" alignItems="center">
+        <Grid container style={{margin:"auto", maxWidth:"1200px", padding:"50px 20px"}} justify="center" alignItems="center">
           <Grid container className={`${classes.header} reveal`}>
             <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
             <span className={classes.numberHighlight}>03.</span> Recent Projects
@@ -481,7 +493,7 @@ function Web(props) {
 
       {/* Contact */}
       <Grid id="contact" container style={{width: "100%", padding:"50px 0", background: "#0F143E"}} alignItems="center">
-        <Grid container style={{maxWidth: "800px", margin: "auto", padding: "0 20px"}}>
+        <Grid container style={{maxWidth: "1200px", margin: "auto", padding: "0 20px"}}>
           <Grid container className={classes.header}>
             <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
             <span className={classes.numberHighlight}>04.</span> Contact
