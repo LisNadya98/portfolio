@@ -110,7 +110,7 @@
 .loadingScreen{
     width:100vW;
     height:100vH;
-    background:#0F143E;
+    background:#171717;
     color: white;
     overflow:hidden;
     display: flex;
@@ -129,7 +129,7 @@
     height:20px;
     position: absolute;
     border-radius: 50%;
-    background-color: #E86C45;
+    background-color: #EE684B;
     left:15%;
     transform-origin: 50%;
     animation: circle .5s alternate infinite ease;
