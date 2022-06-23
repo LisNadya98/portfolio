@@ -342,7 +342,13 @@ function Web(props) {
   }
 
   const getMenuList = () => {
-    return menuList.map(a => {return (<Button key={a.id} onClick={()=>{scroll(`#${a.link}`)}} className={`${classes.menuButton} border`}> {a.label} </Button>)})
+    return menuList.map(a => {return (
+    <>
+      <Link key={a.id} onClick={()=>{scroll(`#${a.link}`)}} style={{textDecoration: "none"}} className={`${classes.menuButton} border`}> 
+        {a.label} 
+      </Link> 
+      {a.id !== menuList.length - 1 && <span className={classes.highlight}> / </span>}
+    </>) } )
   }
 
   const getWorkPost = () => {

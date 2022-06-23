@@ -19,11 +19,6 @@ const useStyles = makeStyles((theme) => ({
         background: darkerPurple
     },
 
-    
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-
     menuIcon:{
         color: greyBg,
     },
@@ -368,6 +363,9 @@ const useStyles = makeStyles((theme) => ({
     menuButton: {
         borderRadius: "0",
         color: white,
+        textTransform: "uppercase",
+        cursor:"pointer",
+        marginTop:"3px",
         fontSize: fontSmall,
         margin: "0 10px"
     }
