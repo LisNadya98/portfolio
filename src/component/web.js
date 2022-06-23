@@ -76,7 +76,7 @@ function Web(props) {
   const [menuValue, setMenuValue] = React.useState(0);
 
   const menuList = [
-    {id: 0, label: "About", link: "about"},
+    {id: 0, label: "Introduction", link: "about"},
     {id: 1, label: "Skills", link: "skills"},
     {id: 2, label: "Work Experience", link: "experience"},
     {id: 3, label: "Projects", link: "projects"},

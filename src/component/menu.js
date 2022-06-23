@@ -25,11 +25,11 @@ export default function MenuDrawer(props) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List style={{background:"#070B30"}}>
+      <List style={{background:"#171717"}}>
         {
           menu.map(a => {return (
             <>
-              {a.link !== 'about' && <Divider style={{background:"#434874"}}/>}
+              {a.link !== 'about' && <Divider style={{background:"#414141"}}/>}
               <ListItem button onClick={()=>scroll(`#${a.link}`)}>
                   <ListItemText className={classes.listText} primary={`${a.label}`} />
               </ListItem>

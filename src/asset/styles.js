@@ -110,7 +110,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     listText: {
-        color: white,
+        fontFamily: fontFamily,
+        color: grey,
     },
 
     header: {
