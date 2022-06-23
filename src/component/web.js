@@ -358,7 +358,7 @@ function Web(props) {
               {a.img}
             </div>
             <div style={{height:"auto", marginTop: "20px"}}>
-              <Typography className={classes.fontBody} >
+              <Typography className={classes.fontBodySmall} >
                 {a.role}
               </Typography>
               <Typography className={classes.postHeader}>

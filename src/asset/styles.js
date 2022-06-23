@@ -63,6 +63,12 @@ const useStyles = makeStyles((theme) => ({
         color:white,
     },
 
+    fontBodySmall:{
+        fontFamily: fontFamily,
+        fontSize:fontSmall,
+        color:grey,
+    },
+
     fontBody:{
         fontFamily: fontFamily,
         fontSize:fontBody,
@@ -239,7 +245,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     imgSmall: {
-        height: "250px",
+        height: "210px",
     }, 
 
     img:{
@@ -269,7 +275,7 @@ const useStyles = makeStyles((theme) => ({
 
     postHeader: {
         fontFamily: "Epilogue, sans-serif",
-        fontSize:"24px",
+        fontSize:"18px",
         margin: "10px 0",
         fontWeight: "200",
         color: red
