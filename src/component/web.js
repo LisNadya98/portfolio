@@ -15,10 +15,11 @@ import {Button,
 import {Brush, Code, LinkedIn, MailOutline, Chat, Computer} from '@material-ui/icons';
 import '../asset/styles.css';
 
-import header from "../element/portfolio.png";
+import me from "../element/me.png";
 import j1 from "../element/j1.png";
 import p1 from "../element/p1.png";
 import trs1 from "../element/trs1.png";
+import favicon from "../element/favicon.png";
 
 function reveal() {
   var reveals = document.querySelectorAll(".reveal");
@@ -78,7 +79,7 @@ function Web(props) {
     {id: 0, label: "About", link: "about"},
     {id: 1, label: "Skills", link: "skills"},
     {id: 2, label: "Work Experience", link: "experience"},
-    {id: 3, label: "Recent projects", link: "projects"},
+    {id: 3, label: "Projects", link: "projects"},
     {id: 4, label: "Contact", link: "contact"}
   ];
 
@@ -95,8 +96,9 @@ function Web(props) {
       id: 1, 
       date: "Apr 2021",
       title: "PixiPixi",
+      role: "Design & Development",
       tech: "Typescript, React JS, Node JS, MongoDB",
-      img: (<img className={classes.img} src={p1} alt="PixiPixi"/>),
+      img: (<img className={`${classes.img} ${!isSmall && classes.imgSmall}`} src={p1} alt="PixiPixi"/>),
       desc: "A proof of concept marketplace using NFT (Non-fungible Token) and Blockchain technology.",
       moreDesc: (<ul>
         <li>Performed 2 job responsibilities, which are design and development.</li>
@@ -109,8 +111,9 @@ function Web(props) {
       id: 2, 
       date: "Apr 2021",
       title: "Jamit!",
+      role: "Design & Development",
       tech: "Javascript, React JS, Node JS, MongoDB",
-      img: (<img className={classes.img} src={j1} alt="Jamit"/>),
+      img: (<img className={`${classes.img} ${!isSmall && classes.imgSmall}`} src={j1} alt="Jamit"/>),
       desc: "A card-based web platform for the creative industry for education and entertainment purposes.",
       moreDesc: (<ul>
         <li>Performed 3 job responsibilities, which are design, development and testing.</li>
@@ -124,8 +127,9 @@ function Web(props) {
       id: 3, 
       date: "Jul 2019",
       title: "Traffic Reporting System",
+      role: "Design & Development",
       tech: "WAMP, Javascript, JQuery, HTML5/CSS",
-      img: (<img className={classes.img} src={trs1} alt="Traffic Reporting System"/>),
+      img: (<img className={`${classes.img} ${!isSmall && classes.imgSmall}`} src={trs1} alt="Traffic Reporting System"/>),
       desc: "A proof of concept product built for my Final Year Project to digitalize the process of reporting traffic accidents in Malaysia.",
       moreDesc: (<ul>
         <li>Designed the system's architecture and optimal userflows based on the requirements found from the background study research</li> 
@@ -263,7 +267,7 @@ function Web(props) {
                           a.desc.map(b =>{
                             return (
                               <span key={b.id}>
-                                <b>{b.title}</b>
+                                <b style={{color:"white"}}>{b.title}</b>
                                 <br/>
                                 {b.desc}
                                 <br/><br/>
@@ -305,7 +309,7 @@ function Web(props) {
                         a.desc.map(b =>{
                           return (
                             <span>
-                              <b>{b.title}</b>
+                              <b style={{color:"white"}}>{b.title}</b>
                               <br/>
                               {b.desc}
                               <br/>
@@ -344,20 +348,21 @@ function Web(props) {
   const getWorkPost = () => {
     return workList.map(a => {
       return (
-      <Grid key={a.id} className={`reveal`}  item xs={12} style={{marginBottom:"1rem"}}>
+      <Grid key={a.id} className={`reveal`}  item xs={isSmall ? 12 : 4} style={{marginBottom:isSmall ? "1rem" : "0"}}>
         <div className={classes.work}>
-          <div style={{margin:"20px"}}>
-            {a.img}
-            <div className={classes.workContent} style={{height:"auto"}}>
-              <Typography className="postHeader">
-                {a.title}
-              </Typography>
+          <div style={{marginRight:isSmall ? "0" : "20px"}}>
+            <div style={{position:"relative"}}>
+              <Grid container justify="center" alignItems="center" className={classes.postDescBg}>
+                <Grid item className={`${classes.postDesc} ${!isSmall && classes.postDescBgSmall}`}>{a.desc}</Grid>
+              </Grid>
+              {a.img}
+            </div>
+            <div style={{height:"auto", marginTop: "20px"}}>
               <Typography className={classes.fontBody} >
-                {a.desc}
+                {a.role}
               </Typography>
-              <Typography className={classes.fontSmall} style={{background:"#171C48", padding:"10px"}}>
-                <Computer className={classes.smallIcon}/>&nbsp;
-                {a.tech}
+              <Typography className={classes.postHeader}>
+                {a.title}
               </Typography>
             </div>
           </div>
@@ -378,12 +383,10 @@ function Web(props) {
     <div className={classes.root}>
       <AppBar position="sticky" className={classes.topBar}>
         <Toolbar variant="dense">
-          <Grid container justify="center" alignItems="center">
+          <Grid container justify="center" alignItems="center" style={{maxWidth:"1200px", margin:"auto"}}>
             <Grid item xs={3}>
-              <div style={{float:"left", background: "linear-gradient(to bottom right, #5A4BE5, #DD34BD)", height:"28px", width:"28px"}}>
-                <Typography className={classes.fontTopPanel} style={{lineHeight:"28px", textAlign:"center"}}>
-                  LN
-                </Typography>
+              <div style={{float:"left", height:"40px", width:"40px"}}>
+                <img src={favicon} style={{width:"100%"}} alt="logo"/>
               </div>
             </Grid>
             {
@@ -402,26 +405,29 @@ function Web(props) {
           </Grid>
         </Toolbar>
       </AppBar>
-      <Grid id="about" justify="center" alignItems="center"   container style={{width:"100%", minHeight:"100vh", position:"relative", background:"#0F143E"}}>
-        <Grid container justify="center" alignItems="center"  style={{maxWidth:"1200px", padding:"20px"}}>
+      <Grid id="about" justify="center" alignItems="center"   container style={{width:"100%", position:"relative", background:"#171717"}}>
+        <Grid container justify="center" alignItems="center"  style={{maxWidth:"1200px", padding:"50px 20px"}}>
           <Grid item xs={isSmall ? 12 : 6}>
             <Typography className={`${classes.fontBodyHeader}`} style={{textAlign:"left", width:"fit-content"}}>
-              Hi,<br/>I’m <span className={`${classes.highlight} typing`}>Lis Nadya</span>
+              Hello,<br/>I’m a <span className={`${classes.highlight} typing`}>Frontend Developer</span>
             </Typography>
-            <Typography className={`${classes.fontBody}`} style={{textAlign:"left"}}>
+            <Typography className={`${classes.fontBody} ${classes.grey}`} style={{textAlign:"left"}}>
               <br/>
-              A Frontend developer with over 2 years of experience in creating, optimizing and maintaining software applications during its product's lifecycle in an agile environment. 
+              My name’s Lis Nadya and I’m based in Malaysia with over 2 years of experience in creating, optimizing and maintaining software applications. 
               I also love playing games and <Link className={classes.link} onClick={()=>{window.open("https://www.instagram.com/echoarte/", '_blank')}}>draw</Link> during my free time!
             </Typography>
-            <Button onClick={()=>{downloadResume()}} className={classes.footerBtn} style={{width:"fit-content", marginTop:"10px"}}>
+            <Button onClick={()=>{downloadResume()}} className={classes.footerBtn} style={{width:"fit-content", marginTop:"20px"}}>
               Download My Resume
             </Button>
           </Grid>
           {
             !isSmall && 
-            <Grid item xs={6}>
-              <img className="headerImg" src={header} alt="Header"/>
+            <>
+              <Grid item xs={2}></Grid> 
+              <Grid item xs={4}>
+                <img className="headerImg" src={me} alt="Header"/>
               </Grid> 
+            </>
           }
         </Grid>
       </Grid>
@@ -438,7 +444,7 @@ function Web(props) {
         </Grid>
       }
 
-      <Grid id="experience"  container style={{width:"100%", background:"#0F143E"}}>
+      <Grid id="experience"  container style={{width:"100%", background:"#171717"}}>
         <Grid container style={{margin:"auto", maxWidth:"1200px", padding:"50px 20px"}} justify="center" alignItems="flex-start">
           <Grid container className={classes.header}>
             <Typography className={`${classes.fontBodyH2} reveal`} style={{textAlign:"left"}}>
@@ -447,7 +453,7 @@ function Web(props) {
           </Grid>
           <Grid container className="reveal" >
             <Grid item xs={isSmall ? 12 : 4}>
-              <Tabs orientation={isSmall ? "horizontal" : "vertical"} style={{height: isSmall ? "0" : "224px", marginRight:isSmall ? "0" : "40px"}} variant="scrollable" value={value} TabIndicatorProps={{style: {background:'linear-gradient(to bottom right, #5A4BE5, #DD34BD)'}}} onChange={handleChange}>
+              <Tabs orientation={isSmall ? "horizontal" : "vertical"} style={{height: isSmall ? "0" : "224px", marginRight:isSmall ? "0" : "40px"}} variant="scrollable" value={value} TabIndicatorProps={{style: {background:'#EE684B'}}} onChange={handleChange}>
                 {
                   expList.map(a => {return (<Tab style={{color:"white", fontSize:"12px", minWidth: "50px", minHeight:"0", marginBottom:"10px", marginRight:"20px"}} key={a.id} label={isSmall ? `0${a.id + 1}.`: a.company } {...a11yProps(a.id)} />)})
                 }
@@ -466,7 +472,7 @@ function Web(props) {
                   <Typography className={classes.postTime} style={{textAlign:"left"}}>
                     {a.period}
                   </Typography>
-                  <Typography className={classes.fontBody} style={{textAlign:"left"}}>
+                  <Typography className={classes.fontBody} style={{color:"white", textAlign:"left"}}>
                     {a.desc}
                   </Typography>
                 </TabPanel>
@@ -481,7 +487,7 @@ function Web(props) {
         <Grid container style={{margin:"auto", maxWidth:"1200px", padding:"50px 20px"}} justify="center" alignItems="center">
           <Grid container className={`${classes.header} reveal`}>
             <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
-            <span className={classes.numberHighlight}>03.</span> Recent Projects
+            <span className={classes.numberHighlight}>03.</span> Projects
             </Typography>
           </Grid>
           {/* List of Works */}
@@ -492,7 +498,7 @@ function Web(props) {
       </Grid>
 
       {/* Contact */}
-      <Grid id="contact" container style={{width: "100%", padding:"50px 0", background: "#0F143E"}} alignItems="center">
+      <Grid id="contact" container style={{width: "100%", padding:"50px 0", background: "#171717"}} alignItems="center">
         <Grid container style={{maxWidth: "1200px", margin: "auto", padding: "0 20px"}}>
           <Grid container className={classes.header}>
             <Typography className={classes.fontBodyH2} style={{textAlign:"left"}}>
@@ -500,13 +506,13 @@ function Web(props) {
             </Typography>
           </Grid>
           <Grid container>
-            <Grid item xs={!isSmall ? 9 : 12} className={!isSmall && classes.footerDesc}>
+            <Grid item xs={!isSmall ? 10 : 12} className={!isSmall && classes.footerDesc}>
               <Typography className={classes.fontBody} style={{textAlign:"left"}}>
                 If you want to get in touch, talk to me about a project collaboration or just say hi,
                 do send me an email or a message via
               </Typography>
             </Grid>
-            <Grid item xs={!isSmall ? 3 : 12} style={{maxWidth:isSmall && "calc(100% - 10px)"}}>
+            <Grid item xs={!isSmall ? 2 : 12} style={{maxWidth:isSmall && "calc(100% - 10px)"}}>
               {getFooterMenuList()}
             </Grid>
           </Grid>

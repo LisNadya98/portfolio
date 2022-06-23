@@ -4,18 +4,18 @@
 }
   
 ::-webkit-scrollbar-track {
-    background: #0F143E; 
+    background: #9D9D9D; 
     
 
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #ff5cf7; 
+    background: #EE684B; 
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #cf2a9b; 
+    background: #bd563e; 
 }
 
 #avatar{
@@ -204,18 +204,19 @@
     letter-spacing: 2px;
     color: #282A33;
     text-align: center;
-    font-family: Nunito Sans, sans-serif;
+    font-family: 'Epilogue', sans-serif;
     left:15%;
 }
 
 .postHeader {
-    font-family: Nunito Sans, sans-serif;
+    font-family: 'Epilogue', sans-serif;
     font-size:24px;
     margin: 10px 0;
     font-weight: bold;
-    background: -webkit-linear-gradient(#5A4BE5, #DD34BD);
+    color: ""
+    /* background: -webkit-linear-gradient(#5A4BE5, #DD34BD);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
 }
 
 .typing {
@@ -227,9 +228,10 @@
     position: absolute;
     right: 0;
     height:60px;
+    margin-top:-2px;
     width: 100%;
     color: white;
-    background: #0F143E;
+    background: #171717;
     animation: typing 4s steps(16) forwards,
       caret 1s infinite;
   }
@@ -270,7 +272,7 @@
     opacity:0.8;
     padding-bottom:5px;
     background: 
-        linear-gradient(to bottom right, #5A4BE5, #DD34BD)
+        linear-gradient(to bottom right, #EE684B, #EE684B)
         left 
         bottom
         no-repeat; 

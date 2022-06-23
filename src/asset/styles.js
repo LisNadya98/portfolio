@@ -1,19 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
-const fontFamily = "Nunito Sans, sans-serif";
+const fontFamily = "Epilogue, sans-serif";
 const fontBody = "16px";
 const fontSmall = "12px";
 const fontH4 = "18px";
 const fontH3 = "20px";
-const fontH2 = "24px";
+const fontH2 = "16px";
 const black = "#3E3E3E";
-const darkPurple = "#0F143E";
-const darkerPurple = "#070B30";
+const darkPurple = "#171717";
+const darkerPurple = "#0D0D0D";
 const grey = "#9D9D9D";
 const grey2 = "#EAEAEA";
 const white = "#FFF";
 const greyBg = "#C2C2C2";
-const pink = "#FF7EAD";
-const purple = "#E071FF";
+const red = "#EE684B";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,11 +29,15 @@ const useStyles = makeStyles((theme) => ({
     },
 
     highlight: {
-        color:"#FF83D5"
+        color: red
+    },
+
+    grey: {
+        color: grey
     },
 
     numberHighlight: {
-        color: purple
+        color: red
     },
 
     topBar:{
@@ -48,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
     link:{
         fontSize:fontBody,
-        color:purple,
+        color:red,
         transition:"0.5s",
         cursor:"pointer"
     },
@@ -63,14 +66,15 @@ const useStyles = makeStyles((theme) => ({
     fontBody:{
         fontFamily: fontFamily,
         fontSize:fontBody,
-        color:white,
+        color:grey,
     },
 
     fontBodyH2:{
         fontFamily: fontFamily,
         fontSize:fontH2,
         color:white,
-        fontWeight:"bold",
+        fontWeight:"400",
+        textTransform: "Uppercase",
         textAlign:"center", 
     },
 
@@ -85,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     fontBodyH4:{
         fontFamily: fontFamily,
         fontSize:fontH4,
-        color:pink,
+        color:red,
         fontStyle:"italic"
     },
 
@@ -99,9 +103,9 @@ const useStyles = makeStyles((theme) => ({
 
     fontBodyHeader:{
         fontFamily: fontFamily,
-        fontWeight:"bold", 
-        lineHeight:"80%",
-        fontSize:"60px",
+        fontWeight:"400", 
+        lineHeight:"98%",
+        fontSize:"40px",
         color:white,
     },
 
@@ -125,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
     postTime: {
         fontFamily: fontFamily,
         fontSize:fontSmall,
-        color: grey2,
+        color: grey,
     },
 
     postTitle: {
@@ -208,7 +212,7 @@ const useStyles = makeStyles((theme) => ({
 
     icon:{
         fontSize:"30px", 
-        color: "#7446DC"
+        color: "#EE684B"
     },
 
     smallIcon:{
@@ -224,24 +228,51 @@ const useStyles = makeStyles((theme) => ({
     work:{
         position:"relative",
         overflow:"hidden",
-        background:darkPurple,
-        borderRadius:"5px",
         transition:"0.5s",
-        // '&:hover':{
-        //     boxShadow:"0 0 4px #c4c4c4",
-        //     transform:"scale(0.95)"
-        // }
-    },
-
-    img:{
-        width:"100%",
-        transition:"0.5s",
-        opacity: "1",
-        '&:hover':{
-            opacity: "0.8"
+        '&:hover $postDescBg':{
+            opacity: "90%",
+        },
+        '&:hover $postDesc':{
+            opacity: "100%",
         }
     },
 
+    imgSmall: {
+        height: "250px",
+    }, 
+
+    img:{
+        width:"100%"
+    },
+
+    postDesc: {
+        color: white,
+        fontSize: fontBody,
+        opacity: "0",
+        height:"fit-content",
+        padding: "10px",
+        transition: "0.5s",
+    },
+
+    postDescBgSmall: {
+        width:"calc(100% - 20px)"
+    },
+
+    postDescBg: {
+        background:"black", 
+        position:"absolute",
+        height: "100%",
+        opacity: "0",
+        transition: "0.5s",
+    },
+
+    postHeader: {
+        fontFamily: "Epilogue, sans-serif",
+        fontSize:"24px",
+        margin: "10px 0",
+        fontWeight: "200",
+        color: red
+    },
     // imgMedium:{
     //     width:"100%",
     //     minHeight:"120px",
@@ -305,25 +336,26 @@ const useStyles = makeStyles((theme) => ({
     },
 
     footerBtn:{
-        borderRadius:"20px", 
-        padding:"10px 20px", 
+        borderRadius:"5px", 
+        padding:"5px 10px", 
         fontSize: fontBody, 
         color:white,
         width: "100%",
+        textAlign:"left",
         marginBottom: "10px",
-        background: "linear-gradient(to bottom right, #22226C, #472361)",
+        background: red,
         textTransform:"none",
         opacity: "1",
         transition:"0.5s",
         '&:hover':{
-            opacity: "0.8",
-
+            opacity: "80%",
+            background: red,
         }
     },
 
     footerDesc: {
         paddingRight: "20px",
-        borderRight: "2px solid #22226C"
+        borderRight: "2px solid #414141"
     },
 
     menuButton: {
